@@ -1,1 +1,1 @@
-web: gunicorn codestar.wsgi
+web: gunicorn agri_hacks.wsgi
