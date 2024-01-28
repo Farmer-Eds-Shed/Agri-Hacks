@@ -1,6 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 from .models import Post
+from .forms import PostForm
 
 # Create your views here.
 class PostList(generic.ListView):
@@ -24,9 +27,35 @@ def post_detail(request, slug):
 
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
+    
 
     return render(
         request,
         "blog/post_detail.html",
-        {"post": post},
+        {
+            "post": post
+        },
+    )
+
+@login_required(login_url="/accounts/login/")
+def post_create(request):
+
+    if request.method == "POST":
+        post_form = PostForm(data=request.POST)
+
+        if post_form.is_valid():
+            fs= post_form.save(commit=False)
+            fs.author= request.user
+            fs.save()
+            messages.add_message(request, messages.SUCCESS, "post created")
+            return redirect('home')
+
+    post_form = PostForm()
+
+    return render(
+        request,
+        "blog/post_create.html",
+        {
+            "post_form": post_form
+        },
     )
