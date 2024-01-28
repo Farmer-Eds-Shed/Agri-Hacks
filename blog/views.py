@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from .forms import PostForm
+from django.http import HttpResponseRedirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from .models import Post
@@ -59,3 +61,21 @@ def post_create(request):
             "post_form": post_form
         },
     )
+
+@login_required(login_url="/accounts/login/")
+def post_edit(request, slug):
+
+    print(slug)
+    context ={}
+    queryset = Post.objects
+    post = get_object_or_404(queryset, slug = slug)
+    form = PostForm(request.POST or None, instance = post)
+    if form.is_valid():
+        form.save()
+        messages.add_message(request, messages.SUCCESS, "post created")
+        return HttpResponseRedirect("/blog/"+slug)
+
+    context["form"] = form
+    return render(request, "blog/post_edit.html", context)
+
+

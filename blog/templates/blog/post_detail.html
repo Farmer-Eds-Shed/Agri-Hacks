@@ -25,8 +25,9 @@
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text">
-                    {{ post.concept }}
+                    {{ post.concept | safe }}
                 </p>
+                <hr>
                 <p class="card-text">
                     {{ post.document | safe }}
                 </p>
@@ -34,5 +35,10 @@
         </div>
     </div>
 </div>
+
+{% if user.is_authenticated and post.author == user %}
+<button class="btn btn-edit"
+  post_id="{{ post.slug }}">Edit</button>
+{% endif %}
 
 {% endblock content %}

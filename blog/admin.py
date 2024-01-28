@@ -14,4 +14,4 @@ class PostAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('title',)}
-    summernote_fields = ('document',)
+    summernote_fields = ('document','concept')
