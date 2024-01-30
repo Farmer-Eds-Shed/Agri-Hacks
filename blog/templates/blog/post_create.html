@@ -5,7 +5,10 @@
 {% block content %}
 
       <form method="post">
-        {{ post_form | crispy }}
+        {{ post_form.media }}
+
+        {{ post_form | crispy}}
+        
         {% csrf_token %}
         <button class="btn btn-secondary"
           type="submit">Submit</button>

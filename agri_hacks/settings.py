@@ -28,7 +28,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-xcxz3euoaw*8utoi=xkwalw6w^w!&yx1@(@7ppwg^v#%*pe=dv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -61,6 +61,8 @@ LOGOUT_REDIRECT_URL = '/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+SUMMERNOTE_THEME = 'lite'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

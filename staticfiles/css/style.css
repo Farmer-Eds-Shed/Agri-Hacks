@@ -156,3 +156,17 @@ body {
 .approval {
     color: rgb(222, 146, 168);
 }
+
+/* Hide picture upload buttons */
+.note-group-select-from-files { 
+    display: none!important; 
+}
+
+.summernote-div {
+    display: inline-block;
+    position: relative;
+  }
+  
+  form .summernote-div .dropdown-menu {
+    margin-left: 0;
+  }
