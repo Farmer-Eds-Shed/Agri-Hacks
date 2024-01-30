@@ -84,3 +84,20 @@ def post_edit(request, slug):
     return render(request, "blog/post_edit.html", context)
 
 
+@login_required(login_url="/accounts/login/")
+def post_delete(request, slug):
+    
+    queryset = Post.objects
+    post = get_object_or_404(queryset, slug = slug)
+    
+    if request.user==post.author: 
+       
+        post.delete()
+        messages.success(request,  'The post has been deleted successfully.')
+        return redirect('home')
+    
+    else:
+       messages.add_message(request, messages.INFO, "Not uthorized to edit that post")
+       return redirect("/"+slug)
+    
+

@@ -1,7 +1,8 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block content %}
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -37,12 +38,43 @@
     {% if user.is_authenticated and post.author == user %}
     <button onclick="location.href='edit'" class="btn btn-edit"
       post_id="{{ post.slug }}">Edit</button>
-    <button onclick="location.href='edit'" class="btn btn-edit"
+    <button class="btn btn-delete"
       post_id="{{ post.slug }}">Delete</button>   
     
       {% endif %}
-    
+</div>   
+
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1"
+  aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+          id="deleteModalLabel">Delete post?</h5>
+        <button type="button" class="btn-close"
+          data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete your post?
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-bs-dismiss="modal">Close</button>
+        <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'js/posts.js' %}"></script>
     {% endblock content %}
 
-</div>
+{% block extras %}
+
+{% endblock %}
+
+
 
