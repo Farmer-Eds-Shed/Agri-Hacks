@@ -56,7 +56,7 @@ def post_create(request):
 
     return render(
         request,
-        "blog/post_create.html",
+        "blog/post_edit.html",
         {
             "post_form": post_form
         },
@@ -68,19 +68,19 @@ def post_edit(request, slug):
     context ={}
     queryset = Post.objects
     post = get_object_or_404(queryset, slug = slug)
-    form = PostForm(request.POST or None, instance = post)
+    post_form = PostForm(request.POST or None, instance = post)
     
     if request.user!=post.author:
        messages.add_message(request, messages.INFO, "Not uthorized to edit that post")
        return redirect("/"+slug)
     
-    if form.is_valid():
-        fs= form.save(commit=False)
+    if post_form.is_valid():
+        fs= post_form.save(commit=False)
         fs.save()
         messages.add_message(request, messages.SUCCESS, "post Updated")
         return redirect("/"+fs.slug)
 
-    context["form"] = form
+    context["post_form"] = post_form
     return render(request, "blog/post_edit.html", context)
 
 

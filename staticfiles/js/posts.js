@@ -34,15 +34,14 @@ for (let button of editButtons) {
  * Initializes deletion functionality for the provided delete buttons.
  * 
  * For each button in the `deleteButtons` collection:
- * - Retrieves the associated comment's ID upon click.
  * - Updates the `deleteConfirm` link's href to point to the 
- * deletion endpoint for the specific comment.
+ * deletion endpoint for the specific Post.
  * - Displays a confirmation modal (`deleteModal`) to prompt 
  * the user for confirmation before deletion.
  */
  for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-        deleteConfirm.href = `post_delete`;
+        deleteConfirm.href = `delete`;
         deleteModal.show();
     });
 }
