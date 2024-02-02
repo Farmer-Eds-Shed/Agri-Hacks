@@ -1,15 +1,15 @@
 <div class="list-group list-group-horizontal btn-group" id="likesarea" role="group">
-    <p>{{ post.likes.count }} likes
-    
-        <button hx-post="{% url 'post_like' post.slug %}" id="like-button" 
-          hx-target="#likesarea" hx-swap="outerHTML" class="btn-like">
-          {% if request.user in post.likes.all %}
-            Un-Like
-          {% else %}
-          Like
-          {% endif %}
-        </button>
-
+    <p>
+        {% if request.user in post.likes.all %}
+            <button hx-post="{% url 'post_like' post.slug %}" id="like-button" 
+            hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-like btn-lg">
+            {{ post.likes.count }} likes
+            </button>
+        {% else %}
+            <button hx-post="{% url 'post_like' post.slug %}" id="like-button" 
+             hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-unlike btn-lg">
+            {{ post.likes.count }} likes
+      {% endif %}
     </p> 
     
 </div>

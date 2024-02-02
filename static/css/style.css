@@ -131,18 +131,29 @@ body {
     text-decoration: underline;
 }
 
-.btn-like {
-    color: white;
-    background: rgb(0, 187, 255);
-}
 
 .btn-delete, .btn-post-delete {
     color: #fff;
     background: #E84610;
 }
 
+.btn-like {
+    color: white;
+    background: rgb(0, 187, 255);
+}
+
+.btn-unlike {
+    color: black;
+    background: rgb(240, 237, 237);
+}
+
 .btn-like:hover,
 .btn-like:active {
+    border: none;
+}
+
+.btn-unlike:hover,
+.btn-unlike:active {
     border: none;
 }
 
