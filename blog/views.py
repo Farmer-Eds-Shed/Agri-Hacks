@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from .forms import PostForm
 from django.http import HttpResponseRedirect
@@ -8,12 +8,15 @@ from .models import Post, Comment
 from .forms import PostForm, CommentForm
 
 # Create your views here.
+
+# Blog List View
 class PostList(generic.ListView):
     queryset = Post.objects.all().filter(status=1)
     template_name = "blog/index.html"
     paginate_by = 6
 
 
+# Loged in Users Blog List
 class MyPosts(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
@@ -21,6 +24,7 @@ class MyPosts(generic.ListView):
         return Post.objects.all().filter(author=self.request.user)
 
 
+# Detailed Post View
 def post_detail(request, slug):
     """
     Display an individual :model:`blog.Post`.
@@ -48,8 +52,6 @@ def post_detail(request, slug):
             comment.post = post
             comment.save()
 
-    
-    
     comment_form = CommentForm()
 
     return render(
@@ -63,6 +65,8 @@ def post_detail(request, slug):
         },
     )
 
+
+# New Post View
 @login_required(login_url="/accounts/login/")
 def post_create(request):
 
@@ -74,7 +78,7 @@ def post_create(request):
             fs.author= request.user
             fs.save()
             messages.add_message(request, messages.SUCCESS, "post created")
-            return redirect("/"+fs.slug)
+            return HttpResponseRedirect(reverse('post_detail', args=[fs.slug]))
 
     post_form = PostForm()
 
@@ -86,6 +90,8 @@ def post_create(request):
         },
     )
 
+
+# Edit Post View
 @login_required(login_url="/accounts/login/")
 def post_edit(request, slug):
     
@@ -96,18 +102,19 @@ def post_edit(request, slug):
     
     if request.user!=post.author:
        messages.add_message(request, messages.INFO, "Not uthorized to edit that post")
-       return redirect("/"+slug)
+       return HttpResponseRedirect(reverse('post_detail', args=[slug]))
     
     if post_form.is_valid():
         fs= post_form.save(commit=False)
         fs.save()
         messages.add_message(request, messages.SUCCESS, "post Updated")
-        return redirect("/"+fs.slug)
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
     context["post_form"] = post_form
     return render(request, "blog/post_edit.html", context)
 
 
+# DeletePost View
 @login_required(login_url="/accounts/login/")
 def post_delete(request, slug):
     
@@ -123,17 +130,11 @@ def post_delete(request, slug):
         elif request.method == 'POST':
             post.delete()
             messages.success(request,  'The post has been deleted successfully.')
-            return redirect('home')
-       
-    #    post.delete()
-    #    messages.success(request,  'The post has been deleted successfully.')
-    #    return redirect('home')
-    
-   # else:
-   #    messages.add_message(request, messages.INFO, "Not uthorized to edit that post")
-   #    return redirect("/"+slug)
-    
+            return HttpResponseRedirect('home')
 
+
+# Edit Comments View    
+@login_required(login_url="/accounts/login/")
 def comment_edit(request, slug, comment_id):
     """
     view to edit comments
@@ -156,6 +157,9 @@ def comment_edit(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+
+# Delete Comments View
+@login_required(login_url="/accounts/login/")
 def comment_delete(request, slug, comment_id):
     """
     view to delete comment
