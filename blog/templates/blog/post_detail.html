@@ -28,6 +28,9 @@
                 <p class="card-text">
                     {{ post.concept | safe }}
                 </p>
+                <div>
+                    {% include "blog/likes_area.html" %}
+                </div>
                 <hr>
                 <p class="card-text">
                     {{ post.document | safe }}
@@ -42,9 +45,7 @@
       post_id="{{ post.slug }}">Delete</button>   
     
       {% endif %}
-      <div>
-        {% include "blog/likes_area.html" %}
-    </div>
+
     
 
 
@@ -126,7 +127,8 @@
           data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Are you sure you want to delete your post?
+        Are you sure you want to delete your comment?
+        <br>
         This action cannot be undone.
       </div>
       <div class="modal-footer">
@@ -141,9 +143,8 @@
 
     {% endblock content %}
 
+
 {% block extras %}
-
+<script src="{% static 'js/comments.js' %}"></script>
 {% endblock %}
-
-
 

@@ -2,14 +2,26 @@
     <p>
         {% if request.user in post.likes.all %}
             <button hx-post="{% url 'post_like' post.slug %}" id="like-button" 
-            hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-like btn-lg">
-            {{ post.likes.count }} likes
+            hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-like">
+            {{ post.likes.count }} Like
             </button>
         {% else %}
             <button hx-post="{% url 'post_like' post.slug %}" id="like-button" 
-             hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-unlike btn-lg">
-            {{ post.likes.count }} likes
-      {% endif %}
-    </p> 
-    
-</div>
+             hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-unlike">
+            {{ post.likes.count }} Like
+            </button>
+        {% endif %}
+
+        {% if request.user in post.made_one.all %}
+            <button hx-post="{% url 'made_one' post.slug %}" id="made-button" 
+            hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-like">
+        {{ post.made_one.count }} Made This
+            </button>
+        {% else %}
+            <button hx-post="{% url 'made_one' post.slug %}" id="made-button" 
+            hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-unlike">
+        {{ post.made_one.count }} Made This
+            </button>
+        {% endif %}
+    </p>
+    </div>

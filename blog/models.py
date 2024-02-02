@@ -15,6 +15,7 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
     likes = models.ManyToManyField(User,related_name='user_like', blank=True)
+    made_one = models.ManyToManyField(User,related_name='made_one', blank=True)
     
 
     class Meta:
@@ -26,6 +27,10 @@ class Post(models.Model):
     @property
     def total_likes(self):
         return self.likes.count()
+        
+    @property
+    def total_made(self):
+        return self.made_one.count()
     
 
 class Comment(models.Model):

@@ -67,6 +67,8 @@ def post_detail(request, slug):
         },
     )
 
+
+# Post Like View
 def post_like(request, slug):
     if request.method == "POST":
         instance = Post.objects.get(slug=slug)
@@ -78,6 +80,21 @@ def post_like(request, slug):
             instance.likes.remove(request.user)
             instance.save() 
             return render( request, 'blog/likes_area.html', context={'post':instance})
+
+
+# Made One View
+def made_one(request, slug):
+    if request.method == "POST":
+        instance = Post.objects.get(slug=slug)
+        if not instance.made_one.filter(id=request.user.id).exists():
+            instance.made_one.add(request.user)
+            instance.save() 
+            return render( request, 'blog/likes_area.html', context={'post':instance})
+        else:
+            instance.made_one.remove(request.user)
+            instance.save() 
+            return render( request, 'blog/likes_area.html', context={'post':instance})
+
 
 # New Post View
 @login_required(login_url="/accounts/login/")
