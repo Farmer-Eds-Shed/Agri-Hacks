@@ -109,7 +109,7 @@ body {
 }
 
 .btn-signup,
-.btn-edit {
+.btn-edit, .btn-post-edit {
     background-color: #188181;
     color: #fff;
 }
@@ -137,7 +137,7 @@ body {
     background: transparent;
 }
 
-.btn-delete {
+.btn-delete, .btn-post-delete {
     color: #fff;
     background: #E84610;
 }

@@ -113,16 +113,25 @@ def post_delete(request, slug):
     
     queryset = Post.objects
     post = get_object_or_404(queryset, slug = slug)
+    context = {'post': post}
     
     if request.user==post.author: 
+
+        if request.method == 'GET':
+            return render(request, 'blog/confirm_delete.html',context)
+        
+        elif request.method == 'POST':
+            post.delete()
+            messages.success(request,  'The post has been deleted successfully.')
+            return redirect('home')
        
-        post.delete()
-        messages.success(request,  'The post has been deleted successfully.')
-        return redirect('home')
+    #    post.delete()
+    #    messages.success(request,  'The post has been deleted successfully.')
+    #    return redirect('home')
     
-    else:
-       messages.add_message(request, messages.INFO, "Not uthorized to edit that post")
-       return redirect("/"+slug)
+   # else:
+   #    messages.add_message(request, messages.INFO, "Not uthorized to edit that post")
+   #    return redirect("/"+slug)
     
 
 def comment_edit(request, slug, comment_id):

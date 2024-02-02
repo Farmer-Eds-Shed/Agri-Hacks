@@ -36,9 +36,9 @@
         </div>
     </div>
     {% if user.is_authenticated and post.author == user %}
-    <button onclick="location.href='edit'" class="btn btn-edit"
+    <button onclick="location.href='edit'" class="btn btn-post-edit"
       post_id="{{ post.slug }}">Edit</button>
-    <button class="btn btn-delete"
+    <button onclick="location.href='delete'" class="btn btn-post-delete"
       post_id="{{ post.slug }}">Delete</button>   
     
       {% endif %}
