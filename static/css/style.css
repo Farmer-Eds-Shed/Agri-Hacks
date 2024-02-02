@@ -132,9 +132,8 @@ body {
 }
 
 .btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
+    color: white;
+    background: rgb(0, 187, 255);
 }
 
 .btn-delete, .btn-post-delete {
@@ -144,8 +143,6 @@ body {
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
-    background: transparent;
     border: none;
 }
 

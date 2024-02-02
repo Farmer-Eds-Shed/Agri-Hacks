@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from .forms import PostForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -43,7 +45,7 @@ def post_detail(request, slug):
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.count()
-    
+     
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -65,6 +67,17 @@ def post_detail(request, slug):
         },
     )
 
+def post_like(request, slug):
+    if request.method == "POST":
+        instance = Post.objects.get(slug=slug)
+        if not instance.likes.filter(id=request.user.id).exists():
+            instance.likes.add(request.user)
+            instance.save() 
+            return render( request, 'blog/likes_area.html', context={'post':instance})
+        else:
+            instance.likes.remove(request.user)
+            instance.save() 
+            return render( request, 'blog/likes_area.html', context={'post':instance})
 
 # New Post View
 @login_required(login_url="/accounts/login/")
@@ -131,6 +144,8 @@ def post_delete(request, slug):
             post.delete()
             messages.success(request,  'The post has been deleted successfully.')
             return HttpResponseRedirect('home')
+        
+
 
 
 # Edit Comments View    

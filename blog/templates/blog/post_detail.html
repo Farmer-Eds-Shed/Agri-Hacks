@@ -42,7 +42,11 @@
       post_id="{{ post.slug }}">Delete</button>   
     
       {% endif %}
-  
+      <div>
+        {% include "blog/likes_area.html" %}
+    </div>
+    
+
 
 <!-- Displaying count of comments -->
 <div class="row">
@@ -135,7 +139,6 @@
   </div>
 </div>
 
-<script src="{% static 'js/posts.js' %}"></script>
     {% endblock content %}
 
 {% block extras %}
