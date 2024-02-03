@@ -130,7 +130,7 @@ def post_edit(request, slug):
     context ={}
     queryset = Post.objects
     post = get_object_or_404(queryset, slug = slug)
-    post_form = PostForm(request.POST or None, instance = post)
+    post_form = PostForm(request.POST or None, request.FILES or None, instance = post)
     
     if request.user!=post.author:
        messages.add_message(request, messages.INFO, "Not uthorized to edit that post")
