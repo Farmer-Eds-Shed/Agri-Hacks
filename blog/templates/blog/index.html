@@ -5,7 +5,9 @@
 <!-- index.html content starts here -->
 <div class="container-fluid">
     <div class="row">
-
+        <form action="{% url 'search' %}" method="get">
+            <input name="query" type="text" placeholder="Search...">
+          </form>
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">

@@ -6,7 +6,7 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
-from cloudinary.forms import cl_init_js_callbacks 
+from django.db.models import Q
 
 
 # Create your views here.
@@ -24,6 +24,19 @@ class MyPosts(generic.ListView):
     paginate_by = 6
     def get_queryset(self):
         return Post.objects.all().filter(author=self.request.user)
+    
+
+# Search View
+class Search(generic.ListView):
+    template_name = "blog/index.html"
+    paginate_by = 6
+    def get_queryset(self):  
+        
+        query = self.request.GET.get("query")
+        if query is not None:    
+            return Post.objects.filter(Q(title__icontains=query)).filter(status=1)
+        else:
+            return Post.objects.all().filter(status=1)
 
 
 # Detailed Post View
