@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
 from .forms import PostForm
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
-from django.template.loader import render_to_string
-from django.http import JsonResponse
+from cloudinary.forms import cl_init_js_callbacks 
+
 
 # Create your views here.
 
@@ -69,6 +69,7 @@ def post_detail(request, slug):
 
 
 # Post Like View
+@login_required(login_url="/accounts/login/")
 def post_like(request, slug):
     if request.method == "POST":
         instance = Post.objects.get(slug=slug)
@@ -83,6 +84,7 @@ def post_like(request, slug):
 
 
 # Made One View
+@login_required(login_url="/accounts/login/")
 def made_one(request, slug):
     if request.method == "POST":
         instance = Post.objects.get(slug=slug)
@@ -101,7 +103,7 @@ def made_one(request, slug):
 def post_create(request):
 
     if request.method == "POST":
-        post_form = PostForm(data=request.POST)
+        post_form = PostForm(request.POST, request.FILES)
 
         if post_form.is_valid():
             fs= post_form.save(commit=False)
@@ -109,8 +111,8 @@ def post_create(request):
             fs.save()
             messages.add_message(request, messages.SUCCESS, "post created")
             return HttpResponseRedirect(reverse('post_detail', args=[fs.slug]))
-
-    post_form = PostForm()
+    else:
+        post_form = PostForm()
 
     return render(
         request,
@@ -160,7 +162,7 @@ def post_delete(request, slug):
         elif request.method == 'POST':
             post.delete()
             messages.success(request,  'The post has been deleted successfully.')
-            return HttpResponseRedirect('home')
+            return HttpResponseRedirect('/')
         
 
 
