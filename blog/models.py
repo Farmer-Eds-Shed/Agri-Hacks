@@ -6,9 +6,21 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Published"))
 
 # Create your models here.
+class Category(models.Model):
+    class Meta:
+        verbose_name_plural = "categories"
+
+    name = models.CharField(max_length=100, unique=True)
+    slug = AutoSlugField(populate_from="name", unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Post(models.Model):
     title = models.CharField(max_length=200,)
     slug = AutoSlugField(populate_from='title',editable=True, always_update=True, unique=True)
+    category = models.ForeignKey(Category, related_name="posts",on_delete=models.SET_NULL,blank=True,null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blog_posts")
     featured_image = CloudinaryField('image', default='placeholder')
     concept = models.TextField()
@@ -18,8 +30,6 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     likes = models.ManyToManyField(User,related_name='user_like', blank=True)
     made_one = models.ManyToManyField(User,related_name='made_one', blank=True)
-
-    
 
     class Meta:
         ordering = ["-created_on"]

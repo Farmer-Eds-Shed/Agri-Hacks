@@ -22,6 +22,7 @@ class PostList(generic.ListView):
 class MyPosts(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
+    
     def get_queryset(self):
         return Post.objects.all().filter(author=self.request.user)
     
@@ -34,7 +35,7 @@ class Search(generic.ListView):
         
         query = self.request.GET.get("query")
         if query is not None:    
-            return Post.objects.filter(Q(title__icontains=query)).filter(status=1)
+            return Post.objects.filter(Q(title__icontains=query) | Q(author__username__icontains=query) | Q(category__name__icontains=query)).filter(status=1)
         else:
             return Post.objects.all().filter(status=1)
 
