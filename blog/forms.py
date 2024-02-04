@@ -1,5 +1,4 @@
-from .models import Post
-from .models import Comment
+from .models import Post,Comment,Category
 from django import forms
 from django_summernote.widgets import SummernoteInplaceWidget
 
@@ -11,7 +10,14 @@ class PostForm(forms.ModelForm):
     concept = forms.CharField(widget=SummernoteInplaceWidget)
     document = forms.CharField(widget=SummernoteInplaceWidget)
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('body',)
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ('name',)

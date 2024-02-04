@@ -179,8 +179,6 @@ def post_delete(request, slug):
             return HttpResponseRedirect('/')
         
 
-
-
 # Edit Comments View    
 @login_required(login_url="/accounts/login/")
 def comment_edit(request, slug, comment_id):
