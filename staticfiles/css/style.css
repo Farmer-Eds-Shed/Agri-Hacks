@@ -167,7 +167,7 @@ body {
 
 /* Override Summernot inline styling to Hide picture upload buttons */
 .note-group-select-from-files { 
-    display: none!important; 
+    display: none !important; 
 }
 
 .summernote-div {
@@ -179,7 +179,6 @@ form .summernote-div .dropdown-menu {
     margin-left: 0;
 }
 
-/* Override Summernot inline styling for responsive page */
-.note-frame {
-    width: auto !important;
+.note-editing-area {
+    background-color: white;
 }

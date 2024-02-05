@@ -66,15 +66,16 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 SUMMERNOTE_THEME = 'lite'
 SUMMERNOTE_CONFIG = {
-            'toolbar': [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['fontname', ['fontname']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['insert', ['link', 'picture', 'video']],
-        ],
-        }
+    'width': '100%',
+    'toolbar': [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['fontname', ['fontname']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['link', 'picture', 'video']],
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

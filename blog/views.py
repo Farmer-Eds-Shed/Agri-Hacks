@@ -27,6 +27,22 @@ class MyPosts(generic.ListView):
         return Post.objects.all().filter(author=self.request.user)
     
 
+# Loged in Users Blog List
+class MyPostsDraft(generic.ListView):
+    template_name = "blog/index.html"
+    paginate_by = 6
+    
+    def get_queryset(self):
+        return Post.objects.all().filter(author=self.request.user).filter(status=0)  
+    
+# Loged in Users Blog List
+class MyPostsPublished(generic.ListView):
+    template_name = "blog/index.html"
+    paginate_by = 6
+    
+    def get_queryset(self):
+        return Post.objects.all().filter(author=self.request.user).filter(status=1) 
+
 # Search View
 class Search(generic.ListView):
     template_name = "blog/index.html"
@@ -39,6 +55,11 @@ class Search(generic.ListView):
         else:
             return Post.objects.all().filter(status=1)
 
+# Category View
+def category_view(request, category):
+    post_list = Post.objects.filter(category=category).filter(status=1)
+    return render(request, "blog/index.html", {'post_list': post_list, 'title':category})
+   
 
 # Detailed Post View
 def post_detail(request, slug):
@@ -154,7 +175,7 @@ def post_edit(request, slug):
         fs= post_form.save(commit=False)
         fs.save()
         messages.add_message(request, messages.SUCCESS, "post Updated")
-        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('post_detail', args=[fs.slug]))
 
     context["post_form"] = post_form
     return render(request, "blog/post_edit.html", context)

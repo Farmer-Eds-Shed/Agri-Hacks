@@ -1,3 +1,4 @@
+
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
@@ -26,15 +27,17 @@
                 </li>
                 {% endif %}
                 {% if user.is_authenticated %}
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Categories</a>
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Categories</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% for category in category_menu %}
-                        <li><a class="dropdown-item" href="#">{{ category.name }}</a></li>
+                        <li><a class="dropdown-item" href="/blog/category/{{category.id}}">{{ category.name }}</a></li>
                         {% endfor %}
                     </ul>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">{{ user }}</a>
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-expanded="false">{{ user }}</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item {% if request.path == my_posts_url %}active{% endif %}" aria-current="page" href="{% url 'my_posts' %}">My Posts</a></li>
+                            <li><a class="dropdown-item {% if request.path == my_posts_url %}active{% endif %}" aria-current="page" href="{% url 'my_drafts' %}">My Drafts</a></li>
+                            <li><a class="dropdown-item {% if request.path == my_posts_url %}active{% endif %}" aria-current="page" href="{% url 'my_published' %}">My Published</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
