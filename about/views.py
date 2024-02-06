@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import About
+from .forms import FeedbackForm
+from django.contrib import messages
 
 
 def about_me(request):
@@ -12,4 +14,23 @@ def about_me(request):
         request,
         "about/about.html",
         {"about_list": about_list},
+    )
+
+def feedback(request):
+
+    if request.method == "POST":
+        feedback_form = FeedbackForm(request.POST)
+
+        if feedback_form.is_valid():
+            feedback_form.save()
+            messages.add_message(request, messages.SUCCESS, "Request received! I endeavour to respond within 2 working days.") 
+    else:
+        feedback_form = FeedbackForm()
+
+    return render(
+        request,
+        "about/feedback.html",
+        {
+            "feedback_form": feedback_form
+        },
     )
