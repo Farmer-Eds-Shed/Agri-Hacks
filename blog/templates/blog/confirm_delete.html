@@ -1,15 +1,23 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<h2>Delete Post</h2>
-
-<form method="POST">
-  {% csrf_token %}
-  <p>Are you sure that you want to delete the post "{{post.title}}"?</p>
-  <div>
-    <button type="submit">Yes, Delete</button>
-    <a href="{% url 'post_detail' post.slug %}">Cancel</a>
+<div class="container">
+  <div class="row">
+      <div class="col-md-8 mt-3 offset-md-2">
+        <h2>Delete Post</h2>
+        <form method="POST">
+          {% csrf_token %}
+          <p>Are you sure that you want to delete the post <strong>{{post.title}}</strong>?</p>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <form>         
+        <button type="submit" class="btn btn-delete">Delete</button>
+        <a class="btn btn-edit" a href="{% url 'post_detail' post.slug %}">Cancel</a>
+      </form>
+    </div>
   </div>
-</form>
-
+</div>
 {% endblock content %}
+
