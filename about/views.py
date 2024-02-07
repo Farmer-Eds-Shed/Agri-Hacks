@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from .models import About
 from .forms import FeedbackForm
 from django.contrib import messages
@@ -24,6 +25,7 @@ def feedback(request):
         if feedback_form.is_valid():
             feedback_form.save()
             messages.add_message(request, messages.SUCCESS, "Request received! I endeavour to respond within 2 working days.") 
+            return HttpResponseRedirect('feedback')
     else:
         feedback_form = FeedbackForm()
 
