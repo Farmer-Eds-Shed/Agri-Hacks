@@ -182,3 +182,12 @@ form .summernote-div .dropdown-menu {
 .note-editing-area {
     background-color: white;
 }
+
+/*Image and video styling*/
+img {
+    max-width: 100%;
+}
+
+iframe.note-video-clip {
+    max-width: 100%;
+}

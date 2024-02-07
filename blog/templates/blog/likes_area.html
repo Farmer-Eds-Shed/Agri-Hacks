@@ -19,7 +19,7 @@
         {% if request.user in post.made_one.all %}
             <button hx-post="{% url 'made_one' post.slug %}" id="made-button" 
             hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-like"
-            data-toggle="tooltip"  title="click for did not built / will not build this">
+            data-toggle="tooltip"  title="click for did not build / will not build this">
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 <span class="badge bg-danger ms-2">{{ post.made_one.count }}</span>
             </button>
