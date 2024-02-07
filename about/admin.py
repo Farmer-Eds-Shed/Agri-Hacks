@@ -13,4 +13,4 @@ admin.site.register(Issues, admin.ModelAdmin)
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
 
-    list_display = ('issue','message', 'read',)
+    list_display = ('issue','email','message', 'read',)

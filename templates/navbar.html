@@ -49,9 +49,13 @@
                 </li> 
 {% endif %}
                 <!-- About -->
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == about_url %}active{%endif%}" aria-current="page"
-                        href="{% url 'about' %}">About</a>
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Contact</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                
+                        <li><a class="nav-link {% if request.path == about_url %}active{%endif%}" aria-current="page"
+                            href="{% url 'about' %}">About</a></li>
+                        <li><a class="nav-link {% if request.path == feedback_url %}active{%endif%}" aria-current="page"
+                            href="{% url 'feedback' %}">Feedback</a></li>
+                    </ul>    
                 </li>
             </ul>
             <!-- Search Bar -->

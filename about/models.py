@@ -5,15 +5,20 @@ class About(models.Model):
     title = models.CharField(max_length=200)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
-
+    
+    class Meta:
+        verbose_name_plural = "about"
+    
     def __str__(self):
         return self.title
     
 class Issues(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = AutoSlugField(populate_from="name", unique=True)
+    
     class Meta:
         verbose_name_plural = "issues"
+    
     def __str__(self):
         return self.name    
     
@@ -25,6 +30,8 @@ class Feedback(models.Model):
     message = models.TextField()
     read = models.BooleanField(default=False)
     
+    class Meta:
+        verbose_name_plural = "feedback"
 
     def __str__(self):
         return f"{self.issue} request from {self.name}"
