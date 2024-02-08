@@ -27,19 +27,38 @@ body {
 }
 
 .card {
-    border: none;
+    border-color: #193e1f;
+    border-radius: 2%;
     background-color: white;
 }
 
-.image-container {
+
+.aspect-ratio-box {
+    border-radius: 2%;
     position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: calc(100% * (200 / 300));
+  }
+
+
+.image-container {
+    overflow: hidden;
+    width:100%;
+    
 }
 
-.image-flash {
+.card-img-top {
     position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+.image-flash {
+    position: relative;
+
     background-color: #188181;
 }
 
@@ -188,6 +207,10 @@ img {
     max-width: 100%;
 }
 
-iframe.note-video-clip {
-    max-width: 100%;
+video {
+    max-width: 100% !important;
 }
+
+
+
+
