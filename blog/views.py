@@ -116,7 +116,8 @@ def post_like(request, slug):
             instance.likes.remove(request.user)
             instance.save() 
             return render( request, 'blog/likes_area.html', context={'post':instance})
-
+    else: 
+        return post_detail(request, slug)
 
 # Made One View
 @login_required(login_url="/accounts/login/")
@@ -131,6 +132,8 @@ def made_one(request, slug):
             instance.made_one.remove(request.user)
             instance.save() 
             return render( request, 'blog/likes_area.html', context={'post':instance})
+    else: 
+        return post_detail(request, slug)
 
 
 # New Post View
