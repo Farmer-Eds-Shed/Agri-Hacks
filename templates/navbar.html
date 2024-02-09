@@ -50,7 +50,7 @@
 {% endif %}
                 <!-- About -->
                 <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-expanded="false">About Us</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                
+                    <ul class="dropdown-menu">                
                         <li><a class="nav-link {% if request.path == about_url %}active{%endif%}" aria-current="page"
                             href="{% url 'about' %}">About</a></li>
                         <li><a class="nav-link {% if request.path == feedback_url %}active{%endif%}" aria-current="page"
