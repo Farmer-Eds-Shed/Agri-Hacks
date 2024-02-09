@@ -22,76 +22,79 @@ class PostList(generic.ListView):
         data = super(PostList, self).get_context_data()
         data['page_title'] = 'Latest Posts'
         return data
-    
+
 
 # Loged in Users Blog List
 class MyPosts(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
-    
+
     def get_queryset(self):
         return Post.objects.all().filter(author=self.request.user)
-    
+
     def get_context_data(self):
         data = super(MyPosts, self).get_context_data()
         data['page_title'] = str(self.request.user) + "'s Posts"
         return data
-    
+
 
 # Loged in Users Blog Draft List
 class MyPostsDraft(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
-    
+
     def get_queryset(self):
         return Post.objects.all().filter(author=self.request.user).filter(status=0)
-        
+
     def get_context_data(self):
         data = super(MyPostsDraft, self).get_context_data()
         data['page_title'] = str(self.request.user) + "'s Draft Posts"
-        return data  
-    
+        return data
+
 
 # Loged in Users Published Blog List
 class MyPostsPublished(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
-    
+
     def get_queryset(self):
         return Post.objects.all().filter(author=self.request.user).filter(status=1)
 
     def get_context_data(self):
         data = super(MyPostsPublished, self).get_context_data()
         data['page_title'] = str(self.request.user) + "'s Published Posts"
-        return data 
-     
+        return data
+
 
 # Search View
 class Search(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
 
-    def get_queryset(self):  
+    def get_queryset(self):
         query = self.request.GET.get("query")
-        if query is not None:    
-            return Post.objects.filter(Q(title__icontains=query) | Q(author__username__icontains=query) | Q(category__name__icontains=query)).filter(status=1)
+        if query is not None:
+            return Post.objects.filter(Q(title__icontains=query)
+                                       | Q(author__username__icontains=query)
+                                       | Q(category__name__icontains=query)).filter(status=1)
         else:
-            return Post.objects.all().filter(status=1)     
-    
+            return Post.objects.all().filter(status=1)
+
     def get_context_data(self):
         query = self.request.GET.get("query")
         data = super(Search, self).get_context_data()
         data['page_title'] = 'Search Results: ' + '"' + str(query) + '"'
-        return data 
-    
+        return data
+
 
 # Category View
 def category_view(request, category):
     post_list = Post.objects.filter(category=category).filter(status=1)
     page_category = Category.objects.get(pk=category)
     page_title = page_category.name
-    return render(request, "blog/index.html", {'post_list': post_list, 'page_title': page_title})
-   
+    return render(request, "blog/index.html",
+                  {'post_list': post_list, 'page_title': page_title})
+
 
 # Detailed Post View
 def post_detail(request, slug):
@@ -112,7 +115,7 @@ def post_detail(request, slug):
     post = get_object_or_404(queryset, slug=slug)
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.count()
-     
+
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -142,15 +145,19 @@ def post_like(request, slug):
     if request.method == "POST":
         if not instance.likes.filter(id=request.user.id).exists():
             instance.likes.add(request.user)
-            instance.save() 
-            return render( request, 'blog/likes_area.html', context={'post':instance})
+            instance.save()
+            return render(request, 'blog/likes_area.html',
+                          context={'post': instance})
         else:
             instance.likes.remove(request.user)
-            instance.save() 
-            return render( request, 'blog/likes_area.html', context={'post':instance})
-    else: 
-        instance.save() 
-        return render( request, 'blog/likes_area.html', context={'post':instance})
+            instance.save()
+            return render(request, 'blog/likes_area.html',
+                          context={'post': instance})
+    else:
+        instance.save()
+        return render(request, 'blog/likes_area.html',
+                      context={'post': instance})
+
 
 # Made One View
 @login_required(login_url="/accounts/login/")
@@ -159,15 +166,18 @@ def made_one(request, slug):
     if request.method == "POST" and request.user.is_authenticated:
         if not instance.made_one.filter(id=request.user.id).exists():
             instance.made_one.add(request.user)
-            instance.save() 
-            return render( request, 'blog/likes_area.html', context={'post':instance})
+            instance.save()
+            return render(request, 'blog/likes_area.html',
+                          context={'post': instance})
         else:
             instance.made_one.remove(request.user)
-            instance.save() 
-            return render( request, 'blog/likes_area.html', context={'post':instance})
-    else: 
-        instance.save() 
-        return render( request, 'blog/likes_area.html', context={'post':instance})
+            instance.save()
+            return render(request, 'blog/likes_area.html',
+                          context={'post': instance})
+    else:
+        instance.save()
+        return render(request, 'blog/likes_area.html',
+                      context={'post': instance})
 
 
 # New Post View
@@ -178,8 +188,8 @@ def post_create(request):
         post_form = PostForm(request.POST, request.FILES)
 
         if post_form.is_valid():
-            fs= post_form.save(commit=False)
-            fs.author= request.user
+            fs = post_form.save(commit=False)
+            fs.author = request.user
             fs.save()
             messages.add_message(request, messages.SUCCESS, "post created")
             return HttpResponseRedirect(reverse('post_detail', args=[fs.slug]))
@@ -198,18 +208,20 @@ def post_create(request):
 # Edit Post View
 @login_required(login_url="/accounts/login/")
 def post_edit(request, slug):
-    
-    context ={}
+
+    context = {}
     queryset = Post.objects
-    post = get_object_or_404(queryset, slug = slug)
-    post_form = PostForm(request.POST or None, request.FILES or None, instance = post)
-    
-    if request.user!=post.author:
-       messages.add_message(request, messages.INFO, "Not uthorized to edit that post")
-       return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-    
+    post = get_object_or_404(queryset, slug=slug)
+    post_form = PostForm(request.POST or None, request.FILES or None,
+                         instance=post)
+
+    if request.user != post.author:
+        messages.add_message(request, messages.INFO,
+                             "Not uthorized to edit that post")
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
     if post_form.is_valid():
-        fs= post_form.save(commit=False)
+        fs = post_form.save(commit=False)
         fs.save()
         messages.add_message(request, messages.SUCCESS, "post Updated")
         return HttpResponseRedirect(reverse('post_detail', args=[fs.slug]))
@@ -221,23 +233,24 @@ def post_edit(request, slug):
 # DeletePost View
 @login_required(login_url="/accounts/login/")
 def post_delete(request, slug):
-    
+
     queryset = Post.objects
-    post = get_object_or_404(queryset, slug = slug)
+    post = get_object_or_404(queryset, slug=slug)
     context = {'post': post}
-    
-    if request.user==post.author: 
+
+    if request.user == post.author:
 
         if request.method == 'GET':
-            return render(request, 'blog/confirm_delete.html',context)
-        
+            return render(request, 'blog/confirm_delete.html', context)
+
         elif request.method == 'POST':
             post.delete()
-            messages.success(request,  'The post has been deleted successfully.')
+            messages.success(request,
+                             'The post has been deleted successfully.')
             return HttpResponseRedirect('/')
-        
 
-# Edit Comments View    
+
+# Edit Comments View
 @login_required(login_url="/accounts/login/")
 def comment_edit(request, slug, comment_id):
     """
@@ -257,7 +270,8 @@ def comment_edit(request, slug, comment_id):
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(request, messages.ERROR,
+                                 'Error updating comment!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
@@ -276,6 +290,7 @@ def comment_delete(request, slug, comment_id):
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(request, messages.ERROR,
+                             'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))

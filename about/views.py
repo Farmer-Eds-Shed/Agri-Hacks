@@ -17,6 +17,7 @@ def about_me(request):
         {"about_list": about_list},
     )
 
+
 def feedback(request):
 
     if request.method == "POST":
@@ -24,7 +25,8 @@ def feedback(request):
 
         if feedback_form.is_valid():
             feedback_form.save()
-            messages.add_message(request, messages.SUCCESS, "Request received! I endeavour to respond within 2 working days.") 
+            messages.add_message(request, messages.SUCCESS,
+                                 "Request received! We endeavour to respond within 2 working days.")
             return HttpResponseRedirect('feedback')
     else:
         feedback_form = FeedbackForm()

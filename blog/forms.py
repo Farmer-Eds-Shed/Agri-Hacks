@@ -1,4 +1,4 @@
-from .models import Post,Comment,Category
+from .models import Post, Comment, Category
 from django import forms
 from django_summernote.widgets import SummernoteInplaceWidget
 
@@ -6,7 +6,8 @@ from django_summernote.widgets import SummernoteInplaceWidget
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title',"category",'featured_image','concept','document','status')
+        fields = ('title', "category", 'featured_image',
+                  'concept', 'document', 'status')
     concept = forms.CharField(widget=SummernoteInplaceWidget)
     document = forms.CharField(widget=SummernoteInplaceWidget)
 
@@ -21,3 +22,4 @@ class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = ('name',)
+ 
