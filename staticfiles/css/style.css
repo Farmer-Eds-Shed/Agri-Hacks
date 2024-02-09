@@ -76,7 +76,6 @@ body {
 .author {
     color: white;
     margin: 4px;
-    text-transform: uppercase; 
 }
 
 .masthead {
@@ -215,8 +214,8 @@ img {
     max-width: 100%;
 }
 
-video {
-    max-width: 100% !important;
+iframe {
+    max-width: 100%; 
 }
 
 #msg {
