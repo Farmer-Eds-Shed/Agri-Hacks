@@ -1,35 +1,51 @@
 <div class="list-group list-group-horizontal btn-group" id="likesarea" role="group">
     <p>
-        {% if request.user in post.likes.all %}
-            <button hx-post="{% url 'post_like' post.slug %}" id="like-button" 
-            hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-like"
-            data-toggle="tooltip"  title="click to unlike">
-                <i class="fa-solid fa-thumbs-up"></i>
-                <span class="badge bg-danger ms-2">{{ post.likes.count }}</span>
-            </button>
-        {% else %}
-            <button hx-post="{% url 'post_like' post.slug %}" id="like-button" 
-             hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-unlike"
-             data-toggle="tooltip"  title="click to like">
-                <i class="fa-solid fa-thumbs-up"></i>
-                <span class="badge bg-danger ms-2">{{ post.likes.count }}</span>
-            </button>
-        {% endif %}
+        {% if user.is_authenticated %}
+            {% if request.user in post.likes.all %}
+                <button hx-post="{% url 'post_like' post.slug %}" id="like-button" 
+                hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-like"
+                data-toggle="tooltip"  title="click to unlike">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <span class="badge bg-danger ms-2">{{ post.likes.count }}</span>
+                </button>
+            {% else %}
+                <button hx-post="{% url 'post_like' post.slug %}" id="like-button" 
+                hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-unlike"
+                 data-toggle="tooltip"  title="click to like">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                    <span class="badge bg-danger ms-2">{{ post.likes.count }}</span>
+                </button>
+            {% endif %}
 
-        {% if request.user in post.made_one.all %}
-            <button hx-post="{% url 'made_one' post.slug %}" id="made-button" 
-            hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-like"
-            data-toggle="tooltip"  title="click for did not build / will not build this">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-                <span class="badge bg-danger ms-2">{{ post.made_one.count }}</span>
-            </button>
+            {% if request.user in post.made_one.all %}
+                <button hx-post="{% url 'made_one' post.slug %}" id="made-button" 
+                hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-like"
+                data-toggle="tooltip"  title="click for did not build / will not build this">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span class="badge bg-danger ms-2">{{ post.made_one.count }}</span>
+                </button>
+            {% else %}
+                <button hx-post="{% url 'made_one' post.slug %}" id="made-button" 
+                hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-unlike"
+                data-toggle="tooltip"  title="click for will build / have built similar">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <span class="badge bg-danger ms-2">{{ post.made_one.count }}</span>
+                </button>
+            {% endif %}
         {% else %}
-            <button hx-post="{% url 'made_one' post.slug %}" id="made-button" 
-            hx-target="#likesarea" hx-swap="outerHTML" class="btn btn-unlike"
-            data-toggle="tooltip"  title="click for will build / have built similar">
+            <button  id="like-button" class="btn btn-unlike"
+            data-toggle="tooltip"  title="click to like" disabled aria-disabled="true">
+                <i class="fa-solid fa-thumbs-up"></i>
+                <span class="badge bg-danger ms-2">{{ post.likes.count }}</span>
+            </button>
+
+            <button  id="made-button" class="btn btn-unlike"
+            data-toggle="tooltip"  title="will build / have built similar" disabled aria-disabled="true">
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 <span class="badge bg-danger ms-2">{{ post.made_one.count }}</span>
             </button>
         {% endif %}
+        
     </p>
+    
     </div>

@@ -138,8 +138,8 @@ def post_detail(request, slug):
 # Post Like View
 @login_required(login_url="/accounts/login/")
 def post_like(request, slug):
+    instance = Post.objects.get(slug=slug)
     if request.method == "POST":
-        instance = Post.objects.get(slug=slug)
         if not instance.likes.filter(id=request.user.id).exists():
             instance.likes.add(request.user)
             instance.save() 
@@ -149,13 +149,14 @@ def post_like(request, slug):
             instance.save() 
             return render( request, 'blog/likes_area.html', context={'post':instance})
     else: 
-        return post_detail(request, slug)
+        instance.save() 
+        return render( request, 'blog/likes_area.html', context={'post':instance})
 
 # Made One View
 @login_required(login_url="/accounts/login/")
 def made_one(request, slug):
-    if request.method == "POST":
-        instance = Post.objects.get(slug=slug)
+    instance = Post.objects.get(slug=slug)
+    if request.method == "POST" and request.user.is_authenticated:
         if not instance.made_one.filter(id=request.user.id).exists():
             instance.made_one.add(request.user)
             instance.save() 
@@ -165,7 +166,8 @@ def made_one(request, slug):
             instance.save() 
             return render( request, 'blog/likes_area.html', context={'post':instance})
     else: 
-        return post_detail(request, slug)
+        instance.save() 
+        return render( request, 'blog/likes_area.html', context={'post':instance})
 
 
 # New Post View

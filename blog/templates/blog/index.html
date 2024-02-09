@@ -21,11 +21,13 @@
                             <div class="image-container">
                                 <div class="aspect-ratio-box">
                                 {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top" src="{% static 'images/default.jpg' %}"
-                                  alt="placeholder image">
+                                <a href="{% url 'post_detail' post.slug %}">
+                                    <img class="card-img-top" src="{% static 'images/default.jpg' %}"
+                                  alt="placeholder image" ></a>
                                 {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}"
-                                  alt="{{ post.title }}">
+                                <a href="{% url 'post_detail' post.slug %}">
+                                    <img class="card-img-top" src=" {{ post.featured_image.url }}"
+                                  alt="{{ post.title }}" ></a>
                                 {% endif %}
                                 </div>
                                 <div class="image-flash">
