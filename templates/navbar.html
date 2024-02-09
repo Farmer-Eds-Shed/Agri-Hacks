@@ -27,14 +27,14 @@
                 </li>
                 {% endif %}
                 <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Categories</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu">
                         {% for category in category_menu %}
                         <li><a class="dropdown-item" href="/blog/category/{{category.id}}">{{ category.name }}</a></li>
                         {% endfor %}
                     </ul>
                     {% if user.is_authenticated %}
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-expanded="false">{{ user }}</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu">
                             <li><a class="dropdown-item {% if request.path == my_posts_url %}active{% endif %}" aria-current="page" href="{% url 'my_posts' %}">My Posts</a></li>
                             <li><a class="dropdown-item {% if request.path == my_posts_url %}active{% endif %}" aria-current="page" href="{% url 'my_drafts' %}">My Drafts</a></li>
                             <li><a class="dropdown-item {% if request.path == my_posts_url %}active{% endif %}" aria-current="page" href="{% url 'my_published' %}">My Published</a></li>
@@ -59,12 +59,12 @@
                 </li>
             </ul>
             <!-- Search Bar -->
-            <span>
+            <div>
                 <form class="d-flex" action="{% url 'search' %}" method="get"> 
                     <input name="query" class="form-control mr-2" type="search" placeholder="Search" aria-label="Search"> 
                     <button class="btn btn-outline-success" type="submit">Search</button> 
                 </form>
-            </span>
+            </div>
         </div>
     </div>
 </nav>
