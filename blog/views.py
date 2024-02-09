@@ -4,7 +4,7 @@ from .forms import PostForm
 from django.http import HttpResponseRedirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.db.models import Q
 
@@ -16,7 +16,13 @@ class PostList(generic.ListView):
     queryset = Post.objects.all().filter(status=1)
     template_name = "blog/index.html"
     paginate_by = 6
+    page_title = "Most Recent"
 
+    def get_context_data(self):
+        data = super(PostList, self).get_context_data()
+        data['page_title'] = 'Latest Posts'
+        return data
+    
 
 # Loged in Users Blog List
 class MyPosts(generic.ListView):
@@ -26,39 +32,65 @@ class MyPosts(generic.ListView):
     def get_queryset(self):
         return Post.objects.all().filter(author=self.request.user)
     
+    def get_context_data(self):
+        data = super(MyPosts, self).get_context_data()
+        data['page_title'] = str(self.request.user) + "'s Posts"
+        return data
+    
 
-# Loged in Users Blog List
+# Loged in Users Blog Draft List
 class MyPostsDraft(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
     
     def get_queryset(self):
-        return Post.objects.all().filter(author=self.request.user).filter(status=0)  
+        return Post.objects.all().filter(author=self.request.user).filter(status=0)
+        
+    def get_context_data(self):
+        data = super(MyPostsDraft, self).get_context_data()
+        data['page_title'] = str(self.request.user) + "'s Draft Posts"
+        return data  
     
-# Loged in Users Blog List
+
+# Loged in Users Published Blog List
 class MyPostsPublished(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
     
     def get_queryset(self):
-        return Post.objects.all().filter(author=self.request.user).filter(status=1) 
+        return Post.objects.all().filter(author=self.request.user).filter(status=1)
+
+    def get_context_data(self):
+        data = super(MyPostsPublished, self).get_context_data()
+        data['page_title'] = str(self.request.user) + "'s Published Posts"
+        return data 
+     
 
 # Search View
 class Search(generic.ListView):
     template_name = "blog/index.html"
     paginate_by = 6
+
     def get_queryset(self):  
-        
         query = self.request.GET.get("query")
         if query is not None:    
             return Post.objects.filter(Q(title__icontains=query) | Q(author__username__icontains=query) | Q(category__name__icontains=query)).filter(status=1)
         else:
-            return Post.objects.all().filter(status=1)
+            return Post.objects.all().filter(status=1)     
+    
+    def get_context_data(self):
+        query = self.request.GET.get("query")
+        data = super(Search, self).get_context_data()
+        data['page_title'] = 'Search Results: ' + '"' + str(query) + '"'
+        return data 
+    
 
 # Category View
 def category_view(request, category):
     post_list = Post.objects.filter(category=category).filter(status=1)
-    return render(request, "blog/index.html", {'post_list': post_list, 'title':category})
+    page_category = Category.objects.get(pk=category)
+    page_title = page_category.name
+    return render(request, "blog/index.html", {'post_list': post_list, 'page_title': page_title})
    
 
 # Detailed Post View
