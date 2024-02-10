@@ -6,10 +6,10 @@ from django_summernote.widgets import SummernoteInplaceWidget
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', "category", 'featured_image',
-                  'concept', 'document', 'status')
-    concept = forms.CharField(widget=SummernoteInplaceWidget)
-    document = forms.CharField(widget=SummernoteInplaceWidget)
+        fields = ['title', "category", 'featured_image',
+                  'concept', 'document', 'status']
+    concept = forms.CharField(widget=SummernoteInplaceWidget, label="Project Description:")
+    document = forms.CharField(widget=SummernoteInplaceWidget, label="Build Details:")
 
 
 class CommentForm(forms.ModelForm):
