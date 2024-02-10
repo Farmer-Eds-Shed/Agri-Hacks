@@ -2,6 +2,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container-fluid">
+        <!-- Home -->
         <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Agri-Hacks</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,10 +14,12 @@
                     <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
                         href="{% url 'home' %}">Home</a>
                 </li>
+                <!-- New Post -->
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == post_create_url %}active{% endif %}" aria-current="page" href="{% url 'post_create' %}">New Post</a>
                 </li>
+                <!-- Login/Register -->
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
@@ -26,18 +29,20 @@
                     <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
                 </li>
                 {% endif %}
+                <!-- Category Dropdown -->
                 <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Categories</a>
                     <ul class="dropdown-menu">
                         {% for category in category_menu %}
                         <li><a class="dropdown-item" href="/blog/category/{{category.id}}">{{ category.name }}</a></li>
                         {% endfor %}
                     </ul>
+                    <!-- User Dropdown -->
                     {% if user.is_authenticated %}
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-expanded="false">{{ user }}</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item {% if request.path == my_posts_url %}active{% endif %}" aria-current="page" href="{% url 'my_posts' %}">My Posts</a></li>
-                            <li><a class="dropdown-item {% if request.path == my_posts_url %}active{% endif %}" aria-current="page" href="{% url 'my_drafts' %}">My Drafts</a></li>
-                            <li><a class="dropdown-item {% if request.path == my_posts_url %}active{% endif %}" aria-current="page" href="{% url 'my_published' %}">My Published</a></li>
+                            <li><a class="dropdown-item" aria-label="My Posts" href="{% url 'my_posts' %}">My Posts</a></li>
+                            <li><a class="dropdown-item"  aria-label="My Drafts" href="{% url 'my_drafts' %}">My Drafts</a></li>
+                            <li><a class="dropdown-item" aria-label="My Published" href="{% url 'my_published' %}">My Published</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -48,13 +53,11 @@
                     </li>
                 </li> 
 {% endif %}
-                <!-- About -->
+                <!-- About dropdown-->
                 <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-expanded="false">About Us</a>
                     <ul class="dropdown-menu">                
-                        <li><a class="nav-link {% if request.path == about_url %}active{%endif%}" aria-current="page"
-                            href="{% url 'about' %}">About</a></li>
-                        <li><a class="nav-link {% if request.path == feedback_url %}active{%endif%}" aria-current="page"
-                            href="{% url 'feedback' %}">Contact</a></li>
+                        <li><a class="dropdown-item" aria-label="About" href="{% url 'about' %}">About</a></li>
+                        <li><a class="dropdown-item" aria-label="Contact Us"href="{% url 'feedback' %}">Contact Us</a></li>
                     </ul>    
                 </li>
             </ul>
