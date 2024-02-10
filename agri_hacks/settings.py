@@ -67,7 +67,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 SUMMERNOTE_THEME = 'lite'
 SUMMERNOTE_CONFIG = {
-    'width': '100%',
     'toolbar': [
         ['style', ['style']],
         ['font', ['bold', 'underline', 'clear']],
