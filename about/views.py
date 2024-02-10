@@ -5,11 +5,11 @@ from .forms import FeedbackForm
 from django.contrib import messages
 
 
-def about_me(request):
+def about(request):
     """
     Renders the About page
     """
-    about_list = About.objects.all().order_by('-updated_on')
+    about_list = About.objects.all().order_by('order')
 
     return render(
         request,

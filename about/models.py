@@ -1,14 +1,19 @@
 from django.db import models
 from autoslug import AutoSlugField
 
+STATUS = ((0, "Draft"), (1, "Published"))
 
 class About(models.Model):
     title = models.CharField(max_length=200)
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
+    order = models.IntegerField(default=1, blank=True, null=True)
+    status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
         verbose_name_plural = "about"
+        ordering = ["order"]
+        
 
     def __str__(self):
         return self.title
