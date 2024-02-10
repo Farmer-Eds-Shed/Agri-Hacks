@@ -231,3 +231,11 @@ table {
 .fab {
     color: white;
 }
+
+textarea {
+    max-width: 100%;
+}
+
+.note-frame{
+    width: 100% !important;
+}

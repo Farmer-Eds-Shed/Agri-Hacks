@@ -602,3 +602,7 @@ select + .related-widget-wrapper-link,
     width: 600px;
     height: 400px;
 }
+
+.summernote-div {
+    max-width: 100% !important;
+}
