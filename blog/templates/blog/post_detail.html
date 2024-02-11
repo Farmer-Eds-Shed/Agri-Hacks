@@ -168,5 +168,7 @@
     {% endblock content %}
 
 {% block extras %}
-<script src="{% static 'js/comments.js' %}"></script>
+{% csrf_token %}
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+<script src="{% static 'js/post_detail.js' %}"></script>
 {% endblock %}

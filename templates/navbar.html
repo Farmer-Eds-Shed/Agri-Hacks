@@ -30,7 +30,7 @@
                 </li>
                 {% endif %}
                 <!-- Category Dropdown -->
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Categories</a>
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                     <ul class="dropdown-menu">
                         {% for category in category_menu %}
                         <li><a class="dropdown-item" href="/blog/category/{{category.id}}">{{ category.name }}</a></li>
@@ -38,7 +38,7 @@
                     </ul>
                     <!-- User Dropdown -->
                     {% if user.is_authenticated %}
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-expanded="false">{{ user }}</a>
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ user }}</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" aria-label="My Posts" href="{% url 'my_posts' %}">My Posts</a></li>
                             <li><a class="dropdown-item"  aria-label="My Drafts" href="{% url 'my_drafts' %}">My Drafts</a></li>
@@ -54,7 +54,7 @@
                 </li> 
 {% endif %}
                 <!-- About dropdown-->
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-expanded="false">About Us</a>
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
                     <ul class="dropdown-menu">                
                         <li><a class="dropdown-item" aria-label="About" href="{% url 'about' %}">About</a></li>
                         <li><a class="dropdown-item" aria-label="Contact Us"href="{% url 'feedback' %}">Contact Us</a></li>
@@ -72,9 +72,4 @@
     </div>
 </nav>
 
-<!-- Script, needs to move out to static js file -->
-<script>
-    $(document).ready(function(){
-       $('.dropdown-toggle').dropdown()
-   });
-</script>
+
