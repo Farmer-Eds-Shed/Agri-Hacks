@@ -14,11 +14,16 @@
 
             <p>{% blocktrans %}Welcome back to Agri-Hacks. To create a new post or leave a comment, please log in. If
                 you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
-                first.{% endblocktrans %}</p>
+                first.{% endblocktrans %}
+                <br>
+                
+            </p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
+            <p> Both <strong>Username</strong> and <strong>Password</strong> are case sensitive.
+            </p>
             <form class="login" method="POST" action="{% url 'account_login' %}">
                 {% csrf_token %}
                 {{ form.as_p }}
