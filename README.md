@@ -1,9 +1,13 @@
 # Agri-Hacks
-[Live Site:](https://agri-hacks-60be548e369f.herokuapp.com/)
+
+
 A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 Assessment
 #### - By FarmerEd
 
-![am I responsive screenshot](static\images\Agri-Hacks-responsive.png)
+
+![am I responsive screenshot](static/images/readme_img/Agri-Hacks-responsive.png)
+### **[Live Site:](https://agri-hacks-60be548e369f.herokuapp.com/)** <br>
+### [Repository:](https://github.com/Farmer-Eds-Shed/Agri-Hacks/)
 
 ---
 ## Table of contents
@@ -21,6 +25,69 @@ A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 As
 
 
 ## UX
+<a name="ux"></a>
+PLanning
+- Database Structure
+- Database Schema
+    - #### Category Model
+
+        | id | Field |
+        |--|--|
+        |name|TextField
+        |slug|SlugField
+
+    - #### Post Model
+
+        | id | Field |
+        |--|--|
+        |title |Charfield|
+        |category |ForeignKey|
+        |author|ForeignKey|
+        |featured_image|CloudinaryField|
+        |concept|TextField|
+        |document|TextField|
+        |created_on|DateTimeField|
+        |Status|IntegerField|
+        |updated_on|DateTimeField
+        |Likes|ManyToManyField
+        |made_one|ManyToMany
+
+    - #### Comment Model
+
+        | id | Field
+        |--|--|
+        |post|ForeignKey
+        |Author|ForeignKey
+        |body|TextField
+        |created_on|DateTimeField
+        |updated_on|DateTimeField
+
+    - #### About Model
+
+        | id | Field
+        |--|--|   
+        |title|CharField
+        |updated_on|DateTimeField
+        |content|TextField
+        |order|IntegerField
+        |status|IntegerField
+
+    - #### Issues Model
+
+        | id | Field
+        |--|--| 
+        |name|CharField
+        |slug|SlugField
+
+    - #### Feedback Model
+
+        | id | Field
+        |--|--| 
+        |issue|ForeignKey
+        |name|CharField
+        |email|EmailField
+        |message|TextField
+        |read|BooleanField
 
 ## Agile Development
 
