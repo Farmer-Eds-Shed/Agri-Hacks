@@ -3,6 +3,8 @@
 A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 Assessment
 #### - By FarmerEd
 
+![am I responsive screenshot](static\images\Agri-Hacks-responsive.png)
+
 ---
 ## Table of contents
 <a name="contents">Back to Top</a>
