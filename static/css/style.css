@@ -191,9 +191,19 @@ body {
     color: rgb(222, 146, 168);
 }
 
-/* Override Summernot inline styling to Hide picture upload buttons */
+/* SummerNote Styling*/
+
+/* !important requred to override Summernot inline styling */
 .note-group-select-from-files { 
     display: none !important; 
+}
+
+.note-editor .note-dropzone  { 
+    display: none !important; 
+}
+
+.note-frame{
+    width: 100% !important;
 }
 
 .summernote-div {
@@ -209,21 +219,6 @@ form .summernote-div .dropdown-menu {
     background-color: white;
 }
 
-/*Image and video styling*/
-img {
-    max-width: 100%;
-}
-
-iframe {
-    width: 100%;
-}
-
-#msg {
-    padding-top: 5px;
-    background-color: #fff;
-    border-color: black;
-}
-
 table {
     max-width: 100%;
 }
@@ -236,6 +231,17 @@ textarea {
     max-width: 100%;
 }
 
-.note-frame{
-    width: 100% !important;
+img {
+    max-width: 100%;
+}
+
+iframe {
+    width: 100%;
+}
+
+/*Add styling to Messages*/
+#msg {
+    padding-top: 5px;
+    background-color: #fff;
+    border-color: black;
 }
