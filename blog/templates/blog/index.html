@@ -27,7 +27,7 @@
                                 {% else %}
                                 <a href="{% url 'post_detail' post.slug %}">
                                     <img class="card-img-top" src=" {{ post.featured_image.url }}"
-                                  alt="{{ post.title }}" ></a>
+                                  alt="{{ post.title }}" secure></a>
                                 {% endif %}
                                 </div>
                                 <div class="image-flash">
