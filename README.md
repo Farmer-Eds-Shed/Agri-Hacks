@@ -69,8 +69,7 @@ The following user stories were scoped out of the project due to time constraint
 - As a site user I can manage my own account so that I can update profile info/ passwords.
 - As a Site User I can sort posts by popularity so that I can find the best projects.
 
-
-
+[Back to Top of page](#contents)
 
 ### PLanning
 - Database Structure
@@ -138,7 +137,20 @@ The following user stories were scoped out of the project due to time constraint
         |message|TextField
         |read|BooleanField
 
+[Back to Top of page](#contents)
+
+<a name="agile"></a>
 ## Agile Development
+
+This project was developed following the priciples of Agile Development, GitHub Projects and Milestones were used to track planning and progress. <br>
+
+User stories were created as Issues and assigned a Milestone(Epic), progress was tracked via the projects board. Each user story was given an acceptance criteria to clearly define when it was completed. <b>
+
+As User Stories were worked on they were moved into the "In Progress" section of the Project board, when a user story matched its acceptance criteria it was closed and moved the  "Done" section. When new features were decided upon after the initial project planning they were added to the "To Do" Section. 
+
+[Back to Top of page](#contents)
+
+
 
 
 ## Features
