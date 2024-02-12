@@ -192,7 +192,8 @@ As User Stories were worked on they were moved into the "In Progress" section of
 - **Users connot** edit any other users posts
 - **Users cannot** edit any other users comments
 - **Users cannot** like/made_this the same post more than once
-- **Users cannot** access the admin panel 
+- **Users cannot** access the admin panel
+
 
 
 [Back to Top of page](#contents)
@@ -379,14 +380,104 @@ Manual testing was used through out the project development. Results of the fina
 ### Lighthouse Results
 ![LightHouse](static/images/readme_img/Agri-Hacks-Lighthouse.png)
 
+### Code Validation
+Code has been run through the following validations tools.
+- [W3 HTML Validator]("https://validator.w3.org/")
+- [CI Python Linter]("https://pep8ci.herokuapp.com/")
+- [W3 CSS Validator]("https://jigsaw.w3.org/css-validator/validator.html.en")
+- [JSHint ]("https://jshint.com/")
 
 ## Bugs
 
 <a name="bugs"></a>
 
+#### Resolved Bugs
+| Bug | Fix |
+|--|--|
+|Confirm Delete button not working|Removed extra form tags|
+|Embedded videos not responsive|Add max-width to iFrames in CSS|
+|Inconsistant image aspect ratios on home page| Create a div aspect ratio box and hide overflow with CSS|
+|Error 500, logged out user clicks like / made_this|Disable buttons for logged out users|
+|Summernote missing CSS in Widget|Manually add CSS|
+|Picture uploads not working on Post Edit form| Add request.FILES to view and <form method='post' enctype='multipart/form-data'>to HTML |
+|Conflict with POST and Comments Edit Buttons| Change Class name on Post Edit buttons|
+|Issue with duplicate post titles|Use Django AutoSlugField and set slug unique = True|
+
+#### UnResolved Bugs
+
+| Bug | Comment |
+|--|--|
+|Post edit form not showing name of existing file uploaded|This does not effect the saving of the form with or without changing the image file. Time constraints prevented the fixing of this issue but it will be addressed in a future deployment.
+
+
 ## Deployment
 
 <a name="deployment"></a>
+
+To deploy the project through Heroku follow these steps:
+
+### Create the Heroku App:
+
+- Sign up / Log in to  [Heroku](https://www.heroku.com/)
+- From  Heroku Dashboard page select 'New' and then 'Create New App'
+- Give the project a name.
+- After select create app. 
+- The name for the app must be unique..
+- Heroku will create the app and bring you to the deploy tab.
+
+### Attach the Postgres database:
+ 
+- Create an account with ElephantSQL and sign up for Tiny Turtle Plan(free).
+- Create a new instance.
+- Check that Postgres version is 12 or over in Stats tab.
+- Copy Database URL from Details Tab.
+- Return to Heroku, Click on the setting tab.
+- Open the config vars section add a variable named DATABASE_URL.
+- Paste the Postgres URL to the value field.
+
+
+### Prepare the environment and settings.py file:
+
+- Inside the Django app repository create a new file called env.py
+- Import the os library and set the environment variable for the DATABASE_URL pasting in the PostGres URL. 
+- The line should appear as os.environ["DATABASE_URL"]= "Paste the link in here"
+- Add a secret key to the app using os.environ["SECRET_KEY"] = "your secret key goes here"
+- Add the secret key just created to the Heroku Config Vars as SECRET_KEY for the KEY value and the secret key value you created as the VALUE
+- In the settings.py file within the django app, import Path from pathlib, import os and import dj_database_url
+- insert the line if os.path.isfile("env.py"): import env
+- remove the insecure secret key that django has in the settings file by default and replace it with SECRET_KEY = os.environ.get('SECRET_KEY')
+- replace the databases section with DATABASES = { 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))} ensure the correct indentation for python is used.
+- In the terminal migrate the models over to the new database connection
+
+### Sign up Cloudinary for image hosting: 
+
+- Navigate in a browser to cloudinary, log in, or create an account and log in.
+- From the dashboard - copy the CLOUDINARY_URL to the clipboard
+- In the env.py file - add os.environ["CLOUDINARY_URL"] = "paste in the Url copied to the clipboard here"
+- In Heroku, add the CLOUDINARY_URL and value copied to the clipboard to the config vars
+- Also add the KEY - DISABLE_COLLECTSTATIC with the Value - 1 to the config vars
+- this key value pair must be removed prior to final deployment
+- Add the cloudinary libraries to the list of installed apps, the order they are inserted is important, 'cloudinary_storage' goes above 'django.contrib.staitcfiles' and 'cloudinary' goes below it.
+- in the Settings.py file - add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path.
+- Link the file to the templates directory in Heroku TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+- Change the templates directory to TEMPLATES_DIR - 'DIRS': [TEMPLATES_DIR]
+- Add Heroku to the ALLOWED_HOSTS list the format will be the app name given in Heroku when creating the app followed by .herokuapp.com
+
+### Create files / directories:
+
+-   In your code editor, create three new top level folders, media, static, templates
+-   Create a new file on the top level directory - Procfile
+-   Within the Procfile add the code - web: guincorn PROJECT_NAME.wsgi
+-   In the terminal, add the changed files, commit and push to GitHub
+
+### Deploy:
+
+-   NB: Ensure in Django settings, DEBUG is False
+-   In Heroku, navigate to the deployment tab and deploy the branch manually - watch the build logs for any errors.
+-   Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
+
+
+
 
 ## Credits
 - [© Ronyzmbow]("https://www.stockfreeimages.com/") - Default Images
