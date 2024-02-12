@@ -20,6 +20,7 @@ A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 As
  1. [ Bugs ](#bugs)  
  1. [ Deployment](#deployment)
  1. [ Credits](#credits)
+ 1. [ Acknowledgements](#acknowledgements)
  1. [ Content](#content)   
 
 
@@ -254,6 +255,8 @@ As User Stories were worked on they were moved into the "In Progress" section of
 
 ## Testing
 
+<a name="testing"></a>
+
 Manual testing was used through out the project development. Results of the final testing phase are shown below.
 
 #### Account Registration Tests
@@ -281,6 +284,14 @@ Manual testing was used through out the project development. Results of the fina
 
 ---
 
+#### Search Tests
+| Test | Result |
+|--|--|
+|User can search posts by username|Pass|
+|User can search posts by term in title|Pass|
+|User can search posts by term in category|Pass|
+|Blank Ssearch term returns all posts|Pass|
+
 #### Security Tests
 
 | Test | Returned | Result  |
@@ -290,9 +301,9 @@ Manual testing was used through out the project development. Results of the fina
 |Non Logged in user cannot edit comments by url|Login Page|Pass|
 |Non Logged in user cannot delete comments by url|Login Page|pass|
 |Logged in user cannot edit other users comments|Page reloads|Pass|
-|Logged in user cannot delete other users comments|Unautherized Message |Pass|
-|Logged in user cannot edit other users posts by url|Unautherized Message|Pass|
-|Logged in user cannot delete other users posts by url|Unautherized Message|Pass|
+|Logged in user cannot delete other users comments|unauthorized Message |Pass|
+|Logged in user cannot edit other users posts by url|unauthorized Message|Pass|
+|Logged in user cannot delete other users posts by url|unauthorized Message|Pass|
 |Non superuser cannot access admin panel|Admin Login Page|Pass|
 
 ---
@@ -327,6 +338,7 @@ Manual testing was used through out the project development. Results of the fina
 |Logged in user can Unlike a Post|Pass|
 |Logged in user can mark Made_This on a post|Pass|
 |Logged in user can unmark Made_This on a post|Pass|
+|Logged out user buttons are disabled|Pass|
 
 --- 
 
@@ -363,11 +375,37 @@ Manual testing was used through out the project development. Results of the fina
 |Admins can edit issue categories|Pass|
 |Admins can delete issue category |Pass|
 
+
+### Lighthouse Results
+![LightHouse](static/images/readme_img/Agri-Hacks-Lighthouse.png)
+
+
 ## Bugs
+
+<a name="bugs"></a>
 
 ## Deployment
 
+<a name="deployment"></a>
+
 ## Credits
-- © Ronyzmbow | <a href="https://www.stockfreeimages.com/">Stock Free Images</a>
+- [© Ronyzmbow]("https://www.stockfreeimages.com/") - Default Images
+- [Alan Bushell]("https://github.com/Alan-Bushell") - Readme template
+- [blog.devgenius]("https://blog.devgenius.io/django-and-htmx-part-1-ff629ae048f1#cb7d") - HTMX for Likes buttons
+- [Bootsstrap Docs]("https://getbootstrap.com/docs/4.1/getting-started/introduction/") - Navbar / general bootstrap documentation
+- [Django Docs]("https://docs.djangoproject.com/en/5.0/") - Django
+- [Favicon.io]("https://favicon.io/") - Favicon
+- [Code Institute WalkThroughs]("https://learn.codeinstitute.net/dashboard") - Boiler plate code and more.
+
+## Acknowledgements
+
+<a name="acknowledgements"></a>
+
+- [FarmHack.org]("https://farmhack.org/tools") - The insperation for Agri-Hacks, site is still live in an archive state but no longer maintained.
+- Mentor Antonio Rodriguez
 
 ## Content
+
+<a name="content"></a>
+
+- [Farmer-Eds-Shed.com] - Blog Post Content borrowed from my original Blog site.
