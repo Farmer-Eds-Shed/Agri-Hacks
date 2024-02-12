@@ -12,7 +12,7 @@ A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 As
 ---
 ## Table of contents
 <a name="contents">Back to Top</a>
- 1. [ UX ](#ux)
+ 1. [ User Experience UX ](#ux)
  1. [Agile Development](#agile)
  1. [ Features ](#features)   
  1. [ Technology used ](#tech) 
@@ -24,10 +24,59 @@ A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 As
 
 
 
-## UX
+## User Experience UX
 <a name="ux"></a>
-PLanning
+A visitor to Agri-Hacks would be a farmer looking to share their on farm innovation and labour saving hacks or a farmer simply looking for insperation for projects to use on their own farms. All types of farm enterprises are welcome from back yard farmers to the largest enterprises.
+
+### User Stories
+
+#### Epic | Registration
+- As a Site User I can register an account so that I can comment on and create new blog posts.
+- As a Site Admin I can manage user accounts.
+
+#### Epic | Categories
+- As a site user I can group my posts so that other users can browse and filter similar content.
+- As a User I can search so that I can easily find blogs of interest.
+- As a site user, I can view a paginated list of posts so that I can select which post I want to view.
+- As a Site Admin I can add/remove categories.
+
+#### Epic | Functioning Blog CRUD
+- As a Site User, I can click on a post so that I can read the full text.
+- As a Site User I can create, read, update and delete my own posts so that I can manage my blog content.
+- As a Site User I can create draft posts so that I can finish writing the content later.
+- As a Site User I can see all post I created so that I can manage and track comments on past posts.
+- As a Site User I can Upload Cover images so that I can showcase my blog.
+- As a Site Admin I can create, read, update and delete posts so that I can moderate content.
+
+#### Epic | Post Ranking
+- As a Site User I can like blog posts so that popular posts can be ranked.
+- As a Site User I can mark which blog posts I've made so that users can see what's being made.
+
+#### Epic | About Page
+- As a site user I can find an about page so that I can learn about the Site and provide feedback.
+- As a Site User I can fill in a form so that I can provide feedback / report issues.
+- As a Site Admin I can review/manage feedback so that I can review issues and general feedback on the site.
+- As a Site Admin I can add/remove issue categories so that I can sort feedback.
+
+#### Epic | Comments
+- As a Site User I can view comments on an individual post so that I can read the conversation.
+- As a Site User I can leave comments on a post so that I can be involved in the conversation.
+- As a Site Admin I can create, read, update and delete posts so that I can moderate content.
+
+#### User stories not yet implemented
+The following user stories were scoped out of the project due to time constraints and labelled as "Won't Have Now" on the project board on Github. It is intended that these user stories will be implemented later.
+
+- As a site user I can manage my own account so that I can update profile info/ passwords.
+- As a Site User I can sort posts by popularity so that I can find the best projects.
+
+
+
+
+### PLanning
 - Database Structure
+
+  ![ERD Diagram](static/images/readme_img/Agri-Hacks-ERD.png)
+
 - Database Schema
     - #### Category Model
 
