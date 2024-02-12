@@ -389,6 +389,8 @@ Code has been run through the following validations tools.
 - [W3 CSS Validator]("https://jigsaw.w3.org/css-validator/validator.html.en")
 - [JSHint ]("https://jshint.com/")
 
+[Back to Top of page](#contents)
+
 ## Bugs
 
 <a name="bugs"></a>
@@ -411,6 +413,7 @@ Code has been run through the following validations tools.
 |--|--|
 |Post edit form not showing name of existing file uploaded|This does not effect the saving of the form with or without changing the image file. Time constraints prevented the fixing of this issue but it will be addressed in a future deployment.
 
+[Back to Top of page](#contents)
 
 ## Deployment
 
@@ -479,9 +482,10 @@ To deploy the project through Heroku follow these steps:
 -   Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
 
 
-
+[Back to Top of page](#contents)
 
 ## Credits
+
 - [© Ronyzmbow]("https://www.stockfreeimages.com/") - Default Images
 - [Alan Bushell]("https://github.com/Alan-Bushell") - Readme template
 - [blog.devgenius]("https://blog.devgenius.io/django-and-htmx-part-1-ff629ae048f1#cb7d") - HTMX for Likes buttons
