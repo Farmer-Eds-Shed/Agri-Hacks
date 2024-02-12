@@ -27,7 +27,7 @@ A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 As
 
 ## User Experience UX
 <a name="ux"></a>
-A visitor to Agri-Hacks would be a farmer looking to share their on farm innovation and labour saving hacks or a farmer simply looking for insperation for projects to use on their own farms. All types of farm enterprises are welcome from back yard farmers to the largest enterprises.
+A visitor to Agri-Hacks would be a farmer looking to share their on farm innovation and labour saving hacks or a farmer simply looking for inspiration for projects to use on their own farms. All types of farm enterprises are welcome from back yard farmers to the largest enterprises.
 
 ### User Stories
 
@@ -65,7 +65,7 @@ A visitor to Agri-Hacks would be a farmer looking to share their on farm innovat
 - As a Site Admin I can create, read, update and delete posts so that I can moderate content.
 
 #### User stories not yet implemented
-The following user stories were scoped out of the project due to time constraints and labelled as "Won't Have Now" on the project board on Github. It is intended that these user stories will be implemented later.
+The following user stories were scoped out of the project due to time constraints and labelled as "Won't Have Now" on the project board on GitHub. It is intended that these user stories will be implemented later.
 
 - As a site user I can manage my own account so that I can update profile info/ passwords.
 - As a Site User I can sort posts by popularity so that I can find the best projects.
@@ -144,7 +144,7 @@ The following user stories were scoped out of the project due to time constraint
 
 <a name="agile"></a>
 
-This project was developed following the priciples of Agile Development, GitHub Projects and Milestones were used to track planning and progress. <br>
+This project was developed following the principles of Agile Development, GitHub Projects and Milestones were used to track planning and progress. <br>
 
 User stories were created as Issues and assigned to a Milestone(Epic), progress was tracked via the projects board. Each user story was given an acceptance criteria to clearly define when it was completed. <br>
 
@@ -183,13 +183,13 @@ As User Stories were worked on they were moved into the "In Progress" section of
 - **Admins can** Add / Remove Post Categories **(CRUD)**
 - **Admins can** Review feedback **(CRUD)**
 - **Admins can** Create new / update feedback issue categories **(CRUD)**
-- **Adnins can** Manage User Accounts **(CRUD)**
+- **Admins can** Manage User Accounts **(CRUD)**
 - **Admins can** Maintain the About Page **(CRUD)**
 
 
 #### Account restrictions:
 
-- **Users connot** edit any other users posts
+- **Users cannot** edit any other users posts
 - **Users cannot** edit any other users comments
 - **Users cannot** like/made_this the same post more than once
 - **Users cannot** access the admin panel
@@ -212,7 +212,7 @@ As User Stories were worked on they were moved into the "In Progress" section of
 
 ### JavaScript
 
- -  Used to add comments CRUD functionality, like / made_this functions and to activate Bootstrap dopdown menus. 
+ -  Used to add comments CRUD functionality, like / made_this functions and to activate Bootstrap dropdown menus. 
 
 ### Python
 
@@ -224,7 +224,7 @@ As User Stories were worked on they were moved into the "In Progress" section of
 
 ### Font Awesome
 
- -  Icon library used for Iconss on links and like buttons.
+ -  Icon library used for Icons on links and like buttons.
 
 ### Bootstrap 5
  - Used as the base front end framework to work alongside Django
@@ -278,7 +278,7 @@ Manual testing was used through out the project development. Results of the fina
 |User can navigate backwards through paginated lists|Pass|
 |User can access menu items|Pass|
 |User can open dropdown menus|Pass|
-|User can acess each item in dropdown menus|pass|
+|User can access each item in dropdown menus|pass|
 |User can navigate to external sites in footer|pass|
 |Admin can access admin panel|Pass|
 |Dropdown menus auto close|pass|
@@ -291,20 +291,22 @@ Manual testing was used through out the project development. Results of the fina
 |User can search posts by username|Pass|
 |User can search posts by term in title|Pass|
 |User can search posts by term in category|Pass|
-|Blank Ssearch term returns all posts|Pass|
+|Blank search term returns all posts|Pass|
+
+---
 
 #### Security Tests
 
 | Test | Returned | Result  |
 |--|--|--|
-|Non logged in user cannot create a new post by url|Login Page|Pass|
-|Non logged in user cannot edit posts by url|Login Page|Pass|
-|Non Logged in user cannot edit comments by url|Login Page|Pass|
-|Non Logged in user cannot delete comments by url|Login Page|pass|
+|Non logged in user cannot create a new post by URL|Login Page|Pass|
+|Non logged in user cannot edit posts by URL|Login Page|Pass|
+|Non Logged in user cannot edit comments by URL|Login Page|Pass|
+|Non Logged in user cannot delete comments by URL|Login Page|pass|
 |Logged in user cannot edit other users comments|Page reloads|Pass|
 |Logged in user cannot delete other users comments|unauthorized Message |Pass|
-|Logged in user cannot edit other users posts by url|unauthorized Message|Pass|
-|Logged in user cannot delete other users posts by url|unauthorized Message|Pass|
+|Logged in user cannot edit other users posts by URL|unauthorized Message|Pass|
+|Logged in user cannot delete other users posts by URL|unauthorized Message|Pass|
 |Non superuser cannot access admin panel|Admin Login Page|Pass|
 
 ---
@@ -396,7 +398,7 @@ Code has been run through the following validations tools.
 |--|--|
 |Confirm Delete button not working|Removed extra form tags|
 |Embedded videos not responsive|Add max-width to iFrames in CSS|
-|Inconsistant image aspect ratios on home page| Create a div aspect ratio box and hide overflow with CSS|
+|Inconsistent image aspect ratios on home page| Create a div aspect ratio box and hide overflow with CSS|
 |Error 500, logged out user clicks like / made_this|Disable buttons for logged out users|
 |Summernote missing CSS in Widget|Manually add CSS|
 |Picture uploads not working on Post Edit form| Add request.FILES to view and <form method='post' enctype='multipart/form-data'>to HTML |
@@ -418,7 +420,7 @@ To deploy the project through Heroku follow these steps:
 
 ### Create the Heroku App:
 
-- Sign up / Log in to  [Heroku](https://www.heroku.com/)
+- Sign up / Log in to  [Heroku]("https://www.heroku.com/")
 - From  Heroku Dashboard page select 'New' and then 'Create New App'
 - Give the project a name.
 - After select create app. 
@@ -427,7 +429,7 @@ To deploy the project through Heroku follow these steps:
 
 ### Attach the Postgres database:
  
-- Create an account with ElephantSQL and sign up for Tiny Turtle Plan(free).
+- Create an account with [ElephantSQL]("https://elephantsql.com/") and sign up for Tiny Turtle Plan(free).
 - Create a new instance.
 - Check that Postgres version is 12 or over in Stats tab.
 - Copy Database URL from Details Tab.
@@ -451,14 +453,14 @@ To deploy the project through Heroku follow these steps:
 
 ### Sign up Cloudinary for image hosting: 
 
-- Navigate in a browser to cloudinary, log in, or create an account and log in.
+- Go to [cloudinary]("https://cloudinary.com"), create an account and log in.
 - From the dashboard - copy the CLOUDINARY_URL to the clipboard
-- In the env.py file - add os.environ["CLOUDINARY_URL"] = "paste in the Url copied to the clipboard here"
+- In the env.py file - add os.environ["CLOUDINARY_URL"] = "paste in the URL copied to the clipboard here"
 - In Heroku, add the CLOUDINARY_URL and value copied to the clipboard to the config vars
 - Also add the KEY - DISABLE_COLLECTSTATIC with the Value - 1 to the config vars
 - this key value pair must be removed prior to final deployment
 - Add the cloudinary libraries to the list of installed apps, the order they are inserted is important, 'cloudinary_storage' goes above 'django.contrib.staitcfiles' and 'cloudinary' goes below it.
-- in the Settings.py file - add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path.
+- in the Settings.py file - add the STATIC files settings - the URL, storage path, directory path, root path, media URL and default file storage path.
 - Link the file to the templates directory in Heroku TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 - Change the templates directory to TEMPLATES_DIR - 'DIRS': [TEMPLATES_DIR]
 - Add Heroku to the ALLOWED_HOSTS list the format will be the app name given in Heroku when creating the app followed by .herokuapp.com
@@ -483,7 +485,7 @@ To deploy the project through Heroku follow these steps:
 - [© Ronyzmbow]("https://www.stockfreeimages.com/") - Default Images
 - [Alan Bushell]("https://github.com/Alan-Bushell") - Readme template
 - [blog.devgenius]("https://blog.devgenius.io/django-and-htmx-part-1-ff629ae048f1#cb7d") - HTMX for Likes buttons
-- [Bootsstrap Docs]("https://getbootstrap.com/docs/4.1/getting-started/introduction/") - Navbar / general bootstrap documentation
+- [Bootstrap Docs]("https://getbootstrap.com/docs/4.1/getting-started/introduction/") - Navbar / general bootstrap documentation
 - [Django Docs]("https://docs.djangoproject.com/en/5.0/") - Django
 - [Favicon.io]("https://favicon.io/") - Favicon
 - [Code Institute WalkThroughs]("https://learn.codeinstitute.net/dashboard") - Boiler plate code and more.
@@ -492,11 +494,11 @@ To deploy the project through Heroku follow these steps:
 
 <a name="acknowledgements"></a>
 
-- [FarmHack.org]("https://farmhack.org/tools") - The insperation for Agri-Hacks, site is still live in an archive state but no longer maintained.
+- [FarmHack.org]("https://farmhack.org/tools") - The inspiration for Agri-Hacks, site is still live in an archive state but no longer maintained.
 - Mentor Antonio Rodriguez
 
 ## Content
 
 <a name="content"></a>
 
-- [Farmer-Eds-Shed.com] - Blog Post Content borrowed from my original Blog site.
+- [Farmer-Eds-Shed.com]("farmer-eds-shed.com") - Blog Post Content borrowed from my original Blog site.
