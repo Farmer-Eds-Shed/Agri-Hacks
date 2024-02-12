@@ -10,12 +10,15 @@ A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 As
 ### [Repository:](https://github.com/Farmer-Eds-Shed/Agri-Hacks/)
 
 ---
-## Table of contents
-<a name="contents">Back to Top</a>
- 1. [ User Experience UX ](#ux)
- 1. [Agile Development](#agile)
+
+
+
+## Contents
+<a name="contents">Back to Top of page</a>
+ 1. [ User Experience UX ](#user-experience-ux)
+ 1. [Agile Development](#agile-development)
  1. [ Features ](#features)   
- 1. [ Technology used ](#tech) 
+ 1. [ Technology used ](#technology-used) 
  1. [ Testing ](#testing)  
  1. [ Bugs ](#bugs)  
  1. [ Deployment](#deployment)
@@ -26,7 +29,9 @@ A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 As
 
 
 ## User Experience UX
+
 <a name="ux"></a>
+
 A visitor to Agri-Hacks would be a farmer looking to share their on farm innovation and labour saving hacks or a farmer simply looking for inspiration for projects to use on their own farms. All types of farm enterprises are welcome from back yard farmers to the largest enterprises.
 
 ### User Stories
@@ -142,7 +147,7 @@ The following user stories were scoped out of the project due to time constraint
 
 ## Agile Development
 
-<a name="agile"></a>
+<a name="agile-development"></a>
 
 This project was developed following the principles of Agile Development, GitHub Projects and Milestones were used to track planning and progress. <br>
 
@@ -261,6 +266,7 @@ As User Stories were worked on they were moved into the "In Progress" section of
 Manual testing was used through out the project development. Results of the final testing phase are shown below.
 
 #### Account Registration Tests
+
 | Test | Result |
 |--|--|
 |User can create account|Pass|
@@ -286,6 +292,7 @@ Manual testing was used through out the project development. Results of the fina
 ---
 
 #### Search Tests
+
 | Test | Result |
 |--|--|
 |User can search posts by username|Pass|
@@ -380,14 +387,16 @@ Manual testing was used through out the project development. Results of the fina
 
 
 ### Lighthouse Results
+
 ![LightHouse](static/images/readme_img/Agri-Hacks-Lighthouse.png)
 
 ### Code Validation
+
 Code has been run through the following validations tools.
-- [W3 HTML Validator]("https://validator.w3.org/")
-- [CI Python Linter]("https://pep8ci.herokuapp.com/")
-- [W3 CSS Validator]("https://jigsaw.w3.org/css-validator/validator.html.en")
-- [JSHint ]("https://jshint.com/")
+- [W3 HTML Validator](https://validator.w3.org/)
+- [CI Python Linter](https://pep8ci.herokuapp.com/)
+- [W3 CSS Validator](https://jigsaw.w3.org/css-validator/validator.html.en)
+- [JSHint ](https://jshint.com/)
 
 [Back to Top of page](#contents)
 
@@ -423,7 +432,7 @@ To deploy the project through Heroku follow these steps:
 
 ### Create the Heroku App:
 
-- Sign up / Log in to  [Heroku]("https://www.heroku.com/")
+- Sign up / Log in to  [Heroku](https://www.heroku.com/)
 - From  Heroku Dashboard page select 'New' and then 'Create New App'
 - Give the project a name.
 - After select create app. 
@@ -432,7 +441,7 @@ To deploy the project through Heroku follow these steps:
 
 ### Attach the Postgres database:
  
-- Create an account with [ElephantSQL]("https://elephantsql.com/") and sign up for Tiny Turtle Plan(free).
+- Create an account with [ElephantSQL](https://elephantsql.com/) and sign up for Tiny Turtle Plan(free).
 - Create a new instance.
 - Check that Postgres version is 12 or over in Stats tab.
 - Copy Database URL from Details Tab.
@@ -456,7 +465,7 @@ To deploy the project through Heroku follow these steps:
 
 ### Sign up Cloudinary for image hosting: 
 
-- Go to [cloudinary]("https://cloudinary.com"), create an account and log in.
+- Go to [cloudinary](https://cloudinary.com), create an account and log in.
 - From the dashboard - copy the CLOUDINARY_URL to the clipboard
 - In the env.py file - add os.environ["CLOUDINARY_URL"] = "paste in the URL copied to the clipboard here"
 - In Heroku, add the CLOUDINARY_URL and value copied to the clipboard to the config vars
@@ -486,23 +495,31 @@ To deploy the project through Heroku follow these steps:
 
 ## Credits
 
-- [© Ronyzmbow]("https://www.stockfreeimages.com/") - Default Images
-- [Alan Bushell]("https://github.com/Alan-Bushell") - Readme template
-- [blog.devgenius]("https://blog.devgenius.io/django-and-htmx-part-1-ff629ae048f1#cb7d") - HTMX for Likes buttons
-- [Bootstrap Docs]("https://getbootstrap.com/docs/4.1/getting-started/introduction/") - Navbar / general bootstrap documentation
-- [Django Docs]("https://docs.djangoproject.com/en/5.0/") - Django
-- [Favicon.io]("https://favicon.io/") - Favicon
-- [Code Institute WalkThroughs]("https://learn.codeinstitute.net/dashboard") - Boiler plate code and more.
+<a name="credits"></a>
+
+- [© Ronyzmbow](https://www.stockfreeimages.com/) - Default Images
+- [Alan Bushell](https://github.com/Alan-Bushell) - Readme template
+- [blog.devgenius](https://blog.devgenius.io/django-and-htmx-part-1-ff629ae048f1#cb7d) - HTMX for Likes buttons
+- [Bootstrap Docs](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - Navbar / general bootstrap documentation
+- [Django Docs](https://docs.djangoproject.com/en/5.0/) - Django
+- [Favicon.io](https://favicon.io/") - Favicon
+- [Code Institute WalkThroughs]("https://learn.codeinstitute.net/dashboard) - Boiler plate code and more.
+
+[Back to Top of page](#contents)
 
 ## Acknowledgements
 
 <a name="acknowledgements"></a>
 
-- [FarmHack.org]("https://farmhack.org/tools") - The inspiration for Agri-Hacks, site is still live in an archive state but no longer maintained.
+- [FarmHack.org](https://farmhack.org/tools) - The inspiration for Agri-Hacks, site is still live in an archive state but no longer maintained.
 - Mentor Antonio Rodriguez
+
+[Back to Top of page](#contents)
 
 ## Content
 
 <a name="content"></a>
 
-- [Farmer-Eds-Shed.com]("farmer-eds-shed.com") - Blog Post Content borrowed from my original Blog site.
+- [Farmer-Eds-Shed.com](farmer-eds-shed.com) - Blog Post Content borrowed from my original Blog site.
+
+[Back to Top of page](#contents)
