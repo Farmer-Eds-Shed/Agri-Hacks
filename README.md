@@ -139,25 +139,66 @@ The following user stories were scoped out of the project due to time constraint
 
 [Back to Top of page](#contents)
 
-<a name="agile"></a>
 ## Agile Development
+
+<a name="agile"></a>
 
 This project was developed following the priciples of Agile Development, GitHub Projects and Milestones were used to track planning and progress. <br>
 
-User stories were created as Issues and assigned a Milestone(Epic), progress was tracked via the projects board. Each user story was given an acceptance criteria to clearly define when it was completed. <b>
+User stories were created as Issues and assigned to a Milestone(Epic), progress was tracked via the projects board. Each user story was given an acceptance criteria to clearly define when it was completed. <br>
 
-As User Stories were worked on they were moved into the "In Progress" section of the Project board, when a user story matched its acceptance criteria it was closed and moved the  "Done" section. When new features were decided upon after the initial project planning they were added to the "To Do" Section. 
+As User Stories were worked on they were moved into the "In Progress" section of the Project board, when a user story matched its acceptance criteria it was closed and moved the  "Done" section. When new features were decided upon after the initial project planning they were also added to the "To Do" Section. 
 
 [Back to Top of page](#contents)
 
 
 
-
 ## Features
 
+<a name="features"></a>
+
+#### User based Features Implemented:
+
+- **Users can** create an account **(Create)**
+- **Users can** log into their account
+- **Users can** log out of their account
+- **Users can** create a blog post **(Create)**
+- **Users can** read a blog post **(Read)**
+- **Users can** edit their own posts **(Update)**
+- **Users can** delete their own posts **(Delete)**
+- **Users can** leave comments **(Create)**
+- **Users can** read all comments **(Read)**
+- **Users can** edit their own comments **(Update)**
+- **Users can** delete their own comments **(Delete)**
+- **Users can** like / unlike posts **(Update)**
+- **Users can** mark / unmark projects they will/have made **(Update)**
+- **Users can** read About page **(Read)**
+- **Users can** contact site admins by contact form **(create)** 
+
+#### Admin based features Implemented:
+
+- **Admins can** moderate posts **(CRUD)**
+- **Admins can** moderate comments **(CRUD)**
+- **Admins can** Add / Remove Post Categories **(CRUD)**
+- **Admins can** Review feedback **(CRUD)**
+- **Admins can** Create new / update feedback issue categories **(CRUD)**
+- **Adnins can** Manage User Accounts **(CRUD)**
+- **Admins can** Maintain the About Page **(CRUD)**
+
+
+#### Account restrictions:
+
+- **Users connot** edit any other users posts
+- **Users cannot** edit any other users comments
+- **Users cannot** like/made_this the same post more than once
+- **Users cannot** access the admin panel 
+
+
+[Back to Top of page](#contents)
+
+##  Technology Used
 
 <a name="tech"></a>
-##  Technology Used
 
 ### Html
 
@@ -169,7 +210,7 @@ As User Stories were worked on they were moved into the "In Progress" section of
 
 ### JavaScript
 
- -  Used to add 
+ -  Used to add comments CRUD functionality, like / made_this functions and to activate Bootstrap dopdown menus. 
 
 ### Python
 
@@ -189,13 +230,16 @@ As User Stories were worked on they were moved into the "In Progress" section of
 ### Jinja Templating with Django
  - Used to render logic within html documents and make the website more dynamic.
 
+### HTMX
+ - Used for Like / Made_this functionality, to avoid page refresh on click.
+
 ### GitHub
  - Used to store the code for this project & for the projects Kanban board used to complete it.
 
 ### Heroku
 - Used to host and deploy this project
 
-### Heroku PostgreSQL
+### Elephant PostgreSQL
 -Heroku PostgreSQL was used as the database for this project during development and in production.
 
 ### Cloudinary
@@ -209,6 +253,9 @@ As User Stories were worked on they were moved into the "In Progress" section of
 ---
 
 ## Testing
+
+Manual testing was used through out the project development. Reults of the final testing phase are shown below.
+
 
 ## Bugs
 
