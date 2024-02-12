@@ -254,8 +254,114 @@ As User Stories were worked on they were moved into the "In Progress" section of
 
 ## Testing
 
-Manual testing was used through out the project development. Reults of the final testing phase are shown below.
+Manual testing was used through out the project development. Results of the final testing phase are shown below.
 
+#### Account Registration Tests
+| Test | Result |
+|--|--|
+|User can create account|Pass|
+|User can log into account|Pass|
+|User can log out of account|Pass|
+
+---
+
+#### User Navigation Tests
+
+| Test | Result |
+|--|--|
+|User can navigate to each displayed blog post|Pass|
+|User can navigate forwards through paginated lists|Pass|
+|User can navigate backwards through paginated lists|Pass|
+|User can access menu items|Pass|
+|User can open dropdown menus|Pass|
+|User can acess each item in dropdown menus|pass|
+|User can navigate to external sites in footer|pass|
+|Admin can access admin panel|Pass|
+|Dropdown menus auto close|pass|
+
+---
+
+#### Security Tests
+
+| Test | Returned | Result  |
+|--|--|--|
+|Non logged in user cannot create a new post by url|Login Page|Pass|
+|Non logged in user cannot edit posts by url|Login Page|Pass|
+|Non Logged in user cannot edit comments by url|Login Page|Pass|
+|Non Logged in user cannot delete comments by url|Login Page|pass|
+|Logged in user cannot edit other users comments|Page reloads|Pass|
+|Logged in user cannot delete other users comments|Unautherized Message |Pass|
+|Logged in user cannot edit other users posts by url|Unautherized Message|Pass|
+|Logged in user cannot delete other users posts by url|Unautherized Message|Pass|
+|Non superuser cannot access admin panel|Admin Login Page|Pass|
+
+---
+
+#### Blog CRUD Tests
+
+| Test |Result  |
+|--|--|
+|Logged in User can create a new post|Pass|
+|Logged in user can edit their own posts|Pass|
+|Logged in user can delete their own posts|Pass|
+|Logged in user can upload a featured image|Pass|
+|logged in user can change a featured image|Pass|
+
+--- 
+
+#### Comments CRUD Tests
+
+| Test |Result  |
+|--|--|
+|Logged in user can add a comment|Pass|
+|Logged in user can edit their own comment|Pass|
+|Logged in user can delete their own posts|Pass|
+
+--- 
+
+#### Like / Made_This Test
+
+| Test |Result  |
+|--|--|
+|Logged in user can Like a Post|Pass|
+|Logged in user can Unlike a Post|Pass|
+|Logged in user can mark Made_This on a post|Pass|
+|Logged in user can unmark Made_This on a post|Pass|
+
+--- 
+
+#### Feedback Form Tests
+
+| Test |Result  |
+|--|--|
+|Users can submit a feedback form|Pass|
+|Users can select issue from dropdown list|Pass|
+
+---
+
+#### Admin Tests
+
+| Test |Result  |
+|--|--|
+|Admins can moderate posts, CRUD|Pass|
+|Admins can moderate comments, CRUD|Pass|
+|Admins can create new Categories|Pass|
+|Admins can delete Categories|Pass|
+|Admins can edit Categories|Pass|
+|Admins can edit users details|Pass|
+|Admins can delete user accounts|Pass|
+|Admins can change user passwords|Pass|
+|Admins can add posts to About page|Pass|
+|Admins can delete posts from About Page|Pass|
+|Admins can edit posts on About Page|Pass|
+|Admins can reorder Posts on About Page|Pass|
+|Admins can review feedback|Pass|
+|Admins can mark feedback as read|Pass|
+|Admins can modify feedback and change issue as needed|Pass|
+|Admins can filter feedback by issue|Pass|
+|Admins can add new issue categories|Pass|
+|Admins can edit issue categories|Pass|
+|Admins can delete issue category |Pass|
 
 ## Bugs
 
