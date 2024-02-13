@@ -14,7 +14,7 @@ A blog site for sharing Agriculture related hacks. Code Institute Portfolio 4 As
 
 
 ## Contents
-<a name="contents">Back to Top of page</a>
+<a name="contents"><a>
  1. [ User Experience UX ](#user-experience-ux)
  1. [Agile Development](#agile-development)
  1. [ Features ](#features)   
@@ -453,10 +453,10 @@ Manual testing was used through out the project development. Results of the fina
 |Non logged in user cannot edit posts by URL|Login Page|Pass|
 |Non Logged in user cannot edit comments by URL|Login Page|Pass|
 |Non Logged in user cannot delete comments by URL|Login Page|pass|
-|Logged in user cannot edit other users comments|Page reloads|Pass|
-|Logged in user cannot delete other users comments|unauthorized Message |Pass|
-|Logged in user cannot edit other users posts by URL|unauthorized Message|Pass|
-|Logged in user cannot delete other users posts by URL|unauthorized Message|Pass|
+|Logged in user cannot edit other users comments by URL|Page reloads without accessing edit page|Pass - but could be improved with msg|
+|Logged in user cannot delete other users comments by URL|Unauthorized Message |Pass|
+|Logged in user cannot edit other users posts by URL|Unauthorized Message|Pass|
+|Logged in user cannot delete other users posts by URL|Unauthorized Message|Pass|
 |Non superuser cannot access admin panel|Admin Login Page|Pass|
 
 ---
