@@ -74,6 +74,7 @@ The following user stories were scoped out of the project due to time constraint
 
 - As a site user I can manage my own account so that I can update profile info/ passwords.
 - As a Site User I can sort posts by popularity so that I can find the best projects.
+- As a site user I can bookmark posts so that I can easily find them later.
 
 [Back to Top of page](#contents)
 
