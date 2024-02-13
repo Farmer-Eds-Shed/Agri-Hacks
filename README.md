@@ -343,6 +343,12 @@ As User Stories were worked on they were moved into the "In Progress" section of
 
 </details>
 
+### Features Left to Implement
+
+- User Account Management (Self Service). 
+- Filter posts by popularity.
+- Bookmark favourite Posts.
+
 
 [Back to Top of page](#contents)
 
@@ -564,6 +570,7 @@ Code has been run through the following validations tools.
 | Bug | Comment |
 |--|--|
 |Post edit form not showing name of existing file uploaded|This does not effect the saving of the form with or without changing the image file. Time constraints prevented the fixing of this issue but it will be addressed in a future deployment.
+|Page reloads on submitting a comment|Not a major issue, but UX would be improved by implementing a real-time update using HTMX or AJAX|  
 
 [Back to Top of page](#contents)
 
@@ -646,7 +653,7 @@ To deploy the project through Heroku follow these steps:
 - [Bootstrap Docs](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - Navbar / general bootstrap documentation
 - [Django Docs](https://docs.djangoproject.com/en/5.0/) - Django
 - [Favicon.io](https://favicon.io/") - Favicon
-- [Code Institute WalkThroughs]("https://learn.codeinstitute.net/dashboard) - Boiler plate code and more.
+- [Code Institute WalkThroughs](https://learn.codeinstitute.net/dashboard) - Boiler plate code and more.
 
 [Back to Top of page](#contents)
 
