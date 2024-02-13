@@ -534,6 +534,13 @@ Manual testing was used through out the project development. Results of the fina
 |Admins can edit issue categories|Pass|
 |Admins can delete issue category |Pass|
 
+### Responsiveness testing
+Responsiveness testing was performed using:
+- https://ui.dev/amiresponsive
+ - Needed a [Chrome plugin](https://chromewebstore.google.com/detail/ignore-x-frame-headers/gleekbfjekiniecknbkamfmkohkpodhe) to temporally disable X-Frame headers.
+- Testing Site on an Android Mobile.
+- Using Chromes Developer tools.
+
 
 ### Lighthouse Results
 
