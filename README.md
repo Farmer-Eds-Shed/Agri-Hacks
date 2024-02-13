@@ -145,6 +145,7 @@ The following user stories were scoped out of the project due to time constraint
 
 [Back to Top of page](#contents)
 
+
 ## Agile Development
 
 <a name="agile-development"></a>
@@ -199,6 +200,148 @@ As User Stories were worked on they were moved into the "In Progress" section of
 - **Users cannot** like/made_this the same post more than once
 - **Users cannot** access the admin panel
 
+
+### Site Features
+
+<details>
+<summary>Navbar</summary>
+
+---
+
+![Logged out](static/images/readme_img/navbar_logged_out.png)
+- With no user logged in the Navbar shows sign in and Register Buttons.
+
+---
+
+![Logged in](static/images/readme_img/navbar_logged_in.png)
+- Logged in users see a New Post link and a user dropdown. 
+
+---
+
+![Categories](static/images/readme_img/categories.png)
+- The Categories Dropdown can be used to filter posts by category.
+- The category list can be maintained by a site admin from the admin panel.
+
+---
+
+![User Dropdown](static/images/readme_img/logged_in_user.png)
+- The User dropdown can be used to filter the logged in users posts by:
+ - All of their own posts.
+ - Just their own published posts.
+ - Just their own draft posts - other users cannot see the draft posts.
+- The User dropdown also has a logout option
+
+---
+
+![About Dropdown](static/images/readme_img/about_drop.png)
+- The about dropdown contains links to:
+ - The About page.
+ - A contact form.
+---
+</details>
+
+<details>
+<summary>Search</summary>
+
+---
+
+![search](static/images/readme_img/Search.png)
+- The Search box in the right of the Navbar searches fields in the Post Model including:
+ - Author
+ - Title
+ - Category
+
+---
+ </details>
+
+<details>
+<summary>Index</summary>
+
+---
+
+![Index](static/images/readme_img/index.png)
+- This is the main landing page of the site:
+ - Posts are arranged here with most recent first.
+ - A max of 6 posts are displayed at a time.
+ - Pagination is implemented and more posts can be found using the navigation buttons at the bottom.
+
+---
+</details>
+
+<details>
+<summary>Blog Post</summary>
+
+---
+
+![Post Detail](static/images/readme_img/post_detail.png)
+- The main reading view for a blog post contains:
+ - Project Description.
+ - A like Button.
+ - A Made_this button - for other posters who have or are building a similar project.
+ - The Main build instructions for the project.
+ - A comments Area.
+
+---
+
+</details>
+
+<details>
+<summary>New Post</summary>
+
+---
+
+![New Post](static/images/readme_img/new_post.png)
+- The New post (and edit form) has fields to:
+ - Add a Title.
+ - Select a category.
+ - Upload a featured image for page head and home screen.
+ - Enter a project description with a rich text editor.
+ - Enter the build details with a rich text editor.
+ - Set post to Published if complete or leave in draft to publish later.
+- The rich text editors can incorporate images and videos hosted on other platforms.
+- The category list can be maintained by admins in the admin panel. 
+
+
+
+---
+</details>
+
+<details>
+<summary>About</summary>
+
+---
+
+![About](static/images/readme_img/about.png)
+- The About Page is a place for users to get all information about the site.
+- The page can be maintained and updated by Admins from the Admin Panel.
+ - Sections can be set in order by an admin using a simple order integer.
+ - Sections can be created, edited and deleted by admins
+
+
+---
+</details>
+
+<details>
+<summary>Contact Us</summary>
+
+---
+
+![contact](static/images/readme_img/contact.png)
+- The Contact / Feedback form has the following fields:
+ - Select issue by type.
+ - Name.
+ - Email.
+ - Message.
+- From the admin panel admins can:
+ - Maintain the list of issue types.
+ - Read messages.
+ - Mark messages as read.
+ - edit / recategorize messages.
+ - delete messages.
+
+---
+
+</details>
 
 
 [Back to Top of page](#contents)
