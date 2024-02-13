@@ -92,6 +92,9 @@ class Search(generic.ListView):
 
 # Category View
 def category_view(request, category):
+    """
+    view to render blog posts by category
+    """
     post_list = Post.objects.filter(category=category).filter(status=1)
     page_category = Category.objects.get(pk=category)
     page_title = page_category.name
@@ -144,6 +147,9 @@ def post_detail(request, slug):
 # Post Like View
 @login_required(login_url="/accounts/login/")
 def post_like(request, slug):
+    """
+    view to like posts
+    """
     instance = Post.objects.get(slug=slug)
     if request.method == "POST":
         if not instance.likes.filter(id=request.user.id).exists():
@@ -165,6 +171,9 @@ def post_like(request, slug):
 # Made One View
 @login_required(login_url="/accounts/login/")
 def made_one(request, slug):
+    """
+    view to select made_one
+    """
     instance = Post.objects.get(slug=slug)
     if request.method == "POST" and request.user.is_authenticated:
         if not instance.made_one.filter(id=request.user.id).exists():
@@ -186,7 +195,9 @@ def made_one(request, slug):
 # New Post View
 @login_required(login_url="/accounts/login/")
 def post_create(request):
-
+    """
+    view to create posts
+    """
     if request.method == "POST":
         post_form = PostForm(request.POST, request.FILES)
 
@@ -211,7 +222,9 @@ def post_create(request):
 # Edit Post View
 @login_required(login_url="/accounts/login/")
 def post_edit(request, slug):
-
+    """
+    view to edit posts
+    """
     context = {}
     queryset = Post.objects
     post = get_object_or_404(queryset, slug=slug)
@@ -236,7 +249,9 @@ def post_edit(request, slug):
 # DeletePost View
 @login_required(login_url="/accounts/login/")
 def post_delete(request, slug):
-
+    """
+    view to delete posts
+    """
     queryset = Post.objects
     post = get_object_or_404(queryset, slug=slug)
     context = {'post': post}

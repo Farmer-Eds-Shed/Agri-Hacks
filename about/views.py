@@ -19,7 +19,9 @@ def about(request):
 
 
 def feedback(request):
-
+    """
+    Renders the Feedback page
+    """
     if request.method == "POST":
         feedback_form = FeedbackForm(request.POST)
 
