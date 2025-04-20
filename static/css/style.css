@@ -245,3 +245,11 @@ iframe {
     background-color: #fff;
     border-color: black;
 }
+
+.image-placeholder {
+    font-style: italic;
+    color: #777;
+    background: #f2f2f2;
+    padding: 0.5em;
+    border-left: 3px solid #ccc;
+  }

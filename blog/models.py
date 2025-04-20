@@ -30,7 +30,7 @@ class Post(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     concept = models.TextField(verbose_name = "Product Description:")
     document = models.TextField(verbose_name = "Build Details")
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(blank=True, null=True)
     status = models.IntegerField(choices=STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
     likes = models.ManyToManyField(User, related_name='user_like', blank=True)
